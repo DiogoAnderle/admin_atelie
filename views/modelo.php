@@ -35,6 +35,7 @@ session_start();
   <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.dataTables.min.css">
   <link rel="stylesheet" href="views/bower_components/datatables.net-bs/css/responsive.bootstrap.min.css">
+  <link rel="stylesheet" href="views/plugins/iCheck/all.css">
 
   <!-- Google Font -->
   <link rel="stylesheet"
@@ -69,6 +70,13 @@ session_start();
 
   <!-- SweetAlert 2 -->
   <script src="views/plugins/sweetalert2/sweetalert2.all.min.js"></script>
+  <script src="views/plugins/iCheck/icheck.min.js"></script>
+
+
+  <!-- InputMask -->
+  <script src="views/plugins/input-mask/jquery.inputmask.js"></script>
+  <script src="views/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+  <script src="views/plugins/input-mask/jquery.inputmask.extensions.js"></script>
 
 
 </head>
@@ -136,6 +144,8 @@ session_start();
   <script src="views/js/modulos.js"></script>
   <script src="views/js/usuarios.js"></script>
   <script src="views/js/categorias.js"></script>
+  <script src="views/js/produtos.js"></script>
+  <script src="views/js/clientes.js"></script>
 </body>
 
 </html>

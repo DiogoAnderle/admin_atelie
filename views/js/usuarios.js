@@ -97,7 +97,7 @@ $(document).on("click", ".btnAtivar", function () {
           icon: "success",
           title: "Usuário atualizado com sucesso.",
           confirmButtonText: "Fechar",
-        }).then(function(result){
+        }).then(function (result) {
           if (result.value) {
             window.location = "usuarios";
           }

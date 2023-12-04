@@ -21,7 +21,7 @@
         </button>
 
         <div class="box-body">
-          <table class="table table-bordered table-hover tabelas table-responsive">
+          <table class="table table-bordered table-hovered responsive tabelaProdutos">
             <thead>
               <tr>
                 <th style="width: 10px;">#</th>
@@ -36,140 +36,22 @@
                 <th>Ações</th>
               </tr>
             </thead>
+            <tfoot>
+              <tr>
+                <th style="width: 10px;">#</th>
+                <th>Imagem</th>
+                <th>Código</th>
+                <th>Descrição</th>
+                <th>Categoria</th>
+                <th>Estoque</th>
+                <th>Preço de compra</th>
+                <th>Preço de venda</th>
+                <th>Dt Cadastro</th>
+                <th>Ações</th>
+              </tr>
+            </tfoot>
 
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
 
-              <tr>
-                <td>1</td>
-                <td><img src="views/img/produtos/product-default.png" alt="" class="img-thumbnail" width='40px'></td>
-                <td>CD0005</td>
-                <td>CANECA PERSONALIZADA 325ML</td>
-                <td>SUBLIMAÇÃO</td>
-                <td>20</td>
-                <td>14,90</td>
-                <td>39,90</td>
-                <td>11/11/1988 22:10:15</td>
-                <td><button class="btn btn-warning btnEditarUsuario" title="Editar"><i class="fa fa-pencil"></i></button>
-                    <button class="btn btn-danger btnExcluirUsuario" title="Excluir"><i class="fa fa-times"></i></button></td>
-              </tr>
-            </tbody>
           </table>
         </div>
 
@@ -182,7 +64,7 @@
 
 
 <!--/***************************************
-MODAL CRIAR PRODUTO
+          MODAL CRIAR PRODUTO
 ***************************************/-->
 <div class="modal fade" id="modalCadastrarProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
@@ -205,44 +87,110 @@ MODAL CRIAR PRODUTO
         <div class="modal-body">
           <div class="box-body">
 
+            <!-- Selecionar Categoria -->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="nome" name="nome" placeholder="Nome Completo">
-              </div>
-            </div>
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <select class="form-control input-lg" id="novaCategoria" name="novaCategoria" required>
+                  <option value="">--Selecione uma Categoria--</option>
 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="usuario" id="usuario" placeholder="Usuario">
-              </div>
-            </div>
+                  <?php
+                  $item = null;
+                  $valor = null;
+                  $categorias = ControllerCategorias::ctrMostrarCategorias($item, $valor);
 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="senha" placeholder="Senha">
-              </div>
-            </div>
+                  foreach ($categorias as $key => $categoria) {
+                    echo ' <option value="' . $categoria["id"] . '">' . $categoria["categoria"] . '</option>';
+                  }
 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="perfil">
-                  <option value="" id="perfil">--Selecione um perfil--</option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Especial">Especial</option>
-                  <option value="Vendedor">Vendedor</option>
+
+                  ?>
+
                 </select>
               </div>
             </div>
 
+            <!-- Informar Código -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-code"></i></span>
+                <input type="text" class="form-control input-lg" id="novoCodigo" name="novoCodigo"
+                  placeholder="Código do Produto" readonly required>
+              </div>
+            </div>
+
+            <!-- Informar Descrição -->
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                <input type="text" class="form-control input-lg" name="novaDescricao" id="novaDescricao"
+                  placeholder="Descrição">
+              </div>
+            </div>
+
+
+
+            <!-- Informar Estoque -->
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                <input type="number" min="0" class="form-control input-lg" name="novoEstoque" id="novoEstoque"
+                  placeholder="Estoque" required>
+              </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <!-- Informar Preço de Compra -->
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
+                  <input type="number" min="0" step="any" class="form-control input-lg" name="novoPrecoCompra"
+                    id="novoPrecoCompra" placeholder="Preço de Compra" required>
+                </div>
+
+              </div>
+
+              <!-- Informar Preço de Venda -->
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+                  <input type="number" min="0" step="any" class="form-control input-lg" name="novoPrecoVenda"
+                    id="novoPrecoVenda" placeholder="Preço de Venda" readonly required>
+                </div>
+                <br>
+
+                <!-- Checkbox para porcentagem -->
+
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="utilizarPorcentagem">
+                      <input type="checkbox" id="utilizarPorcentagem" name="utilizarPorcentagem"
+                        class="minimal porcentagem" checked>
+                      Utilizar porcentagem
+                    </label>
+                  </div>
+                </div>
+                <!-- Entrada para porcentagem -->
+                <div class="col-xs-6" style="padding:0;">
+                  <div class="input-group">
+                    <input type="number" class="form-control input-lg" id="novaPorcentagem" name="novaPorcentagem"
+                      min="0" value="50" required>
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adicionar Foto -->
             <div class="form-group">
               <div class="panel">Enviar Imagem</div>
               <input type="file" class="form-control input-lg novaImagem" name="novaImagem">
               <p class="help-block">Tamanho máximo da imagem 20MB</p>
-              <img src="views\img\usuarios\user-default.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="views/img/produtos/product-default.png" class="img-thumbnail previsualizar" width="100px">
             </div>
 
 
@@ -252,11 +200,11 @@ MODAL CRIAR PRODUTO
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal"
             aria-label="Close">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Salvar Usuário</button>
+          <button type="submit" class="btn btn-primary">Cadastrar Produto</button>
         </div>
         <?php
-        $criarUsuario = new ControllerUsuarios();
-        $criarUsuario->ctrCriarUsuario();
+        $criarProduto = new ControllerProdutos();
+        $criarProduto->ctrCriarProduto();
         ?>
       </form>
     </div>
@@ -266,9 +214,9 @@ MODAL CRIAR PRODUTO
 </div>
 
 <!--/***************************************
-MODAL EDITAR USUÁRIO
+          MODAL EDITAR PRODUTO
 ***************************************/-->
-<div class="modal fade" id="modalEditarUsuario" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+<div class="modal fade" id="modalEditarProduto" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -277,7 +225,7 @@ MODAL EDITAR USUÁRIO
 
         <div class="modal-header bg-primary">
 
-          <h4 class="modal-title">Editar Usuário</h4>
+          <h4 class="modal-title">Editar Produto</h4>
 
           <button style="position: absolute; top: -1%; right:2%; font-size=25px; border-radius:50%;" type="button"
             class="btn btn-sm btn-danger" data-dismiss="modal" aria-label="Close">
@@ -289,61 +237,112 @@ MODAL EDITAR USUÁRIO
         <div class="modal-body">
           <div class="box-body">
 
+            <!-- Selecionar Categoria -->
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="editarNome" name="editarNome" value="">
-              </div>
-            </div>
+                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <select class="form-control input-lg" name="editarCategoria" readonly required>
+                  <option id="editarCategoria" value=""></option>
 
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" readonly id="editarUsuario" name="editarUsuario">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="editarSenha" id="editarSenha"
-                  placeholder="Insira uma nova senha">
-                <input type="hidden" name="senhaAtual" id="senhaAtual">
-              </div>
-            </div>
-
-            <div class="form-group">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="editarPerfil">
-                  <option value="" id="editarPerfil"></option>
-                  <option value="Administrador">Administrador</option>
-                  <option value="Especial">Especial</option>
-                  <option value="Vendedor">Vendedor</option>
                 </select>
               </div>
             </div>
 
+            <!-- Informar Código -->
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-code"></i></span>
+                <input type="text" class="form-control input-lg" id="editarCodigo" name="editarCodigo" readonly
+                  required>
+              </div>
+            </div>
+
+            <!-- Informar Descrição -->
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                <input type="text" class="form-control input-lg" name="editarDescricao" id="editarDescricao">
+              </div>
+            </div>
+
+
+
+            <!-- Informar Estoque -->
+
+            <div class="form-group">
+              <div class="input-group">
+                <span class="input-group-addon"><i class="fa fa-check"></i></span>
+                <input type="number" min="0" class="form-control input-lg" name="editarEstoque" id="editarEstoque"
+                  required>
+              </div>
+            </div>
+
+
+
+            <div class="form-group row">
+              <!-- Informar Preço de Compra -->
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-arrow-up"></i></span>
+                  <input type="number" min="0" step="any" class="form-control input-lg" name="editarPrecoCompra"
+                    id="editarPrecoCompra" required>
+                </div>
+
+              </div>
+
+              <!-- Informar Preço de Venda -->
+              <div class="col-xs-12 col-sm-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-arrow-down"></i></span>
+                  <input type="number" min="0" step="any" class="form-control input-lg" name="editarPrecoVenda"
+                    id="editarPrecoVenda" readonly required>
+                </div>
+                <br>
+
+                <!-- Checkbox para porcentagem -->
+
+                <div class="col-xs-12 col-sm-6">
+                  <div class="form-group">
+                    <label for="utilizarEditarPorcentagem">
+                      <input type="checkbox" id="utilizarEditarPorcentagem" name="utilizarEditarPorcentagem"
+                        class="minimal porcentagem" checked>
+                      Utilizar porcentagem
+                    </label>
+                  </div>
+                </div>
+                <!-- Entrada para porcentagem -->
+                <div class="col-xs-6" style="padding:0;">
+                  <div class="input-group">
+                    <input type="number" class="form-control input-lg" id="editarPorcentagem" name="editarPorcentagem"
+                      min="0" value="50" required>
+                    <span class="input-group-addon"><i class="fa fa-percent"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Adicionar Foto -->
             <div class="form-group">
               <div class="panel">Enviar Imagem</div>
               <input type="file" class="form-control input-lg novaImagem" name="editarImagem">
               <p class="help-block">Tamanho máximo da imagem 20MB</p>
-              <img src="views\img\usuarios\user-default.png" class="img-thumbnail previsualizar" width="100px">
+              <img src="views/img/produtos/product-default.png" class="img-thumbnail previsualizar" width="100px">
               <input type="hidden" name="imagemAtual" id="imagemAtual">
+
             </div>
-
-
           </div>
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-default pull-left" data-dismiss="modal"
             aria-label="Close">Cancelar</button>
-          <button type="submit" class="btn btn-primary">Atualizar Usuário</button>
+          <button type="submit" class="btn btn-primary">Salvar Edição</button>
         </div>
+
         <?php
-        $editarUsuario = new ControllerUsuarios();
-        $editarUsuario->ctrEditarUsuario();
+        $editarProduto = new ControllerProdutos();
+        $editarProduto->ctrEditarProduto();
         ?>
       </form>
     </div>
@@ -351,7 +350,8 @@ MODAL EDITAR USUÁRIO
   </div>
 
 </div>
+
 <?php
-$excluirUsuario = new ControllerUsuarios();
-$excluirUsuario->ctrExcluirUsuario();
+$excluirProduto = new ControllerProdutos();
+$excluirProduto->ctrExcluirProduto();
 ?>

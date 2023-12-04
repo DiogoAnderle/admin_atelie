@@ -24,9 +24,9 @@ $(".btnEditarCategoria").click(function () {
 });
 
 /******************************
- * Editar categoria
+ * Excluir categoria
  ******************************/
-$(".btnExcluirCategoria").click(function(){
+$(".btnExcluirCategoria").click(function () {
   var idCategoria = $(this).attr("idCategoria");
   var nomeCategoria = $(this).attr("nomeCategoria");
   Swal.fire({
