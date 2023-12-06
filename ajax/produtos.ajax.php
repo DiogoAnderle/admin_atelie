@@ -27,24 +27,34 @@ class AjaxProdutos
 
         echo json_encode($response);
     }
+
+    /***************************************
+                 Editar Produto
+     ***************************************/
     public $idProduto;
+    public $carregarProdutos;
 
     public function ajaxEditarProduto()
     {
-        $item = 'id';
-        $valor = $this->idProduto;
+        if ($this->carregarProdutos == "ok") {
+            $item = null;
+            $valor = null;
 
-        $resposta = ControllerProdutos::ctrMostrarProdutos($item, $valor);
+            $resposta = ControllerProdutos::ctrMostrarProdutos($item, $valor);
 
-        echo json_encode($resposta);
+            echo json_encode($resposta);
+        } else {
+
+            $item = 'id';
+            $valor = $this->idProduto;
+
+            $resposta = ControllerProdutos::ctrMostrarProdutos($item, $valor);
+
+            echo json_encode($resposta);
+        }
     }
 }
 
-
-
-/***************************************
-               Editar Categoria
-   ***************************************/
 if (isset($_POST["idCategoria"])) {
 
     $codigoProduto = new AjaxProdutos();
@@ -53,10 +63,24 @@ if (isset($_POST["idCategoria"])) {
 
 }
 
+/***************************************
+             Editar Produto
+ ***************************************/
 if (isset($_POST["idProduto"])) {
 
     $codigoProduto = new AjaxProdutos();
     $codigoProduto->idProduto = $_POST["idProduto"];
     $codigoProduto->ajaxEditarProduto();
+
+}
+/***************************************
+             Carregar Produtos
+ ***************************************/
+
+if (isset($_POST["carregarProdutos"])) {
+
+    $carregarProdutos = new AjaxProdutos();
+    $carregarProdutos->carregarProdutos = $_POST["carregarProdutos"];
+    $carregarProdutos->ajaxEditarProduto();
 
 }

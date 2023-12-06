@@ -10,7 +10,6 @@
     </ol>
   </section>
 
-
   <section class="content">
 
     <div class="row">
@@ -18,7 +17,7 @@
       <div class="col-lg-5 col-xs-12">
         <div class="box box-success">
           <div class="box-header with-border"></div>
-          <form method="post" role="form">
+          <form method="post" role="form" class="formularioVenda">
             <div class="box-body">
               <div class="box">
 
@@ -27,7 +26,8 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-user"></i></span>
                     <input type="text" class="form-control" id="novoVendedor" name="novoVendedor"
-                      value="Usuário Administrador" readonly>
+                      value="<?php echo $_SESSION["nome"]; ?>" readonly>
+                    <input type="hidden" name="idVendedor" value="<?php echo $_SESSION["id"]; ?>">
                   </div>
                 </div>
 
@@ -35,7 +35,24 @@
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                    <input type="text" class="form-control" id="novaVenda" name="novaVenda" value="10125410" readonly>
+
+                    <?php
+                    $item = null;
+                    $valor = null;
+                    $vendas = ControllerVendas::ctrMostrarVendas($item, $valor);
+
+                    if (!$vendas) {
+                      echo '<input type="text" class="form-control" id="novaVenda" name="novaVenda" value="10001" readonly>';
+
+                    } else {
+                      foreach ($vendas as $key => $venda) {
+
+                      }
+                      $codigo = $venda["codigo"] + 1;
+                      echo '<input type="text" class="form-control" id="novaVenda" name="novaVenda" value="' . $codigo . '" readonly>';
+                    }
+                    ?>
+
                   </div>
                 </div>
 
@@ -44,7 +61,23 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                    <select name="selecionarCliente" id="selecionarCliente" reauired class="form-control"></select>
+                    <select name="selecionarCliente" id="selecionarCliente" reauired class="form-control">
+                      <option value="">Selecionar Cliente</option>
+
+                      <?php
+                      $item = null;
+                      $valor = null;
+                      $clientes = ControllerClientes::ctrMostrarClientes($item, $valor);
+
+
+                      foreach ($clientes as $key => $cliente) {
+                        echo '<option value="' . $cliente["id"] . '">' . $cliente["nome"] . '</option>';
+
+                      }
+
+
+                      ?>
+                    </select>
 
                     <span class="input-group-addon">
                       <button type="button" class="btn btn-xs" data-toggle="modal" data-target="#modalCadastrarCliente">
@@ -57,39 +90,15 @@
 
                 <!-- Vincular Produto -->
 
-                <div class="row novoProduto">
+                <div class="form-group row novoProduto">
 
-                  <!-- Descricao -->
-                  <div class="col-xs-6" style="padding-right: 0;">
-                    <div class="input-group">
-                      <span class="input-group-addon"><button class="btn btn-danger btn-xs"><i
-                            class="fa fa-times"></i></button>
-                      </span>
-                      <input type="text" class="form-control" id="cadastrarProduto" name="cadastrarProduto"
-                        placeholder="Descrição do produto" required>
-                    </div>
-                  </div>
-                  <!-- Quantidade -->
-                  <div class="col-xs-3">
-                    <div class="input-group">
-                      <input type="number" min="1" class="form-control" id="novoQuantidadeProduto"
-                        name="novoPrnovoQuantidadeProdutoecoProduto" placeholder="0" required>
-                    </div>
-                  </div>
 
-                  <!-- Preço -->
-                  <div class="col-xs-3" style="padding-left: 0;">
-                    <div class="input-group">
-                      <span class="input-group-addon"><i class="ion ion-social-usd"></i></span>
-                      <input type="number" min="1" class="form-control" id="novoPrecoProduto" name="novoPrecoProduto"
-                        placeholder="0,00" readonly required>
-                    </div>
-                  </div>
+
                 </div>
 
                 <!-- Botão para Cadastrar Produto -->
                 <br><br>
-                <button type="button" class="btn btn-default hidden-lg"> Cadastrar Produto</button>
+                <button type="button" class="btn btn-default hidden-lg btnAdicionarProdutos"> Adicionar Produto</button>
                 <hr>
 
                 <!-- Acréscimos e Total -->
@@ -107,15 +116,15 @@
                           <td style="width:50%;">
                             <div class="input-group">
                               <input type="number" class="form-control" min="0" id="novoAcrescimoVenda"
-                                name="novoAcrescimoVenda" placeholder="0" required>
+                                name="novoAcrescimoVenda" placeholder="0">
                               <span class="input-group-addon"> <i class="fa fa-percent"></i></span>
                             </div>
                           </td>
                           <td style="width:50%;">
                             <div class="input-group">
-                              <span class="input-group-addon"> <i class="ion ion-social-usd"></i></span>
+                              <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
                               <input type="number" class="form-control" min="1" id="novoTotalVenda"
-                                name="novoTotalVenda" placeholder="0" required readonly>
+                                name="novoTotalVenda" placeholder="0" readonly>
                             </div>
                           </td>
                         </tr>
@@ -142,7 +151,7 @@
                   <div class="col-xs-5" style="padding-left:0px ;">
                     <div class="input-group">
                       <input type="text" class="form-control" id="novoCodigoTransacao" name="novoCodigoTransacao"
-                        required placeholder="Código da Transação">
+                        placeholder="Código da Transação">
                       <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                     </div>
                   </div>
@@ -169,7 +178,7 @@
 
           <div class="box-header with-border"></div>
           <div class="box-body">
-            <table class="table table-bordered-table table-hovered striped dt-responsive tabelas">
+            <table class="table table-bordered-table table-hovered striped dt-responsive tabelaVendas">
               <thead>
                 <tr>
                   <th style="width: 10px;">#</th>
@@ -177,25 +186,10 @@
                   <th>Cód.</th>
                   <th>Descrição</th>
                   <th>Estoque</th>
+                  <th>Valor</th>
                   <th>Ações</th>
                 </tr>
               </thead>
-              <tbody>
-                <tr>
-                  <td>1</td>
-                  <td><img src="views/img/produtos/product-default.png" class="img-thumbnail" width="40px"></td>
-                  <td>123</td>
-                  <td>Lorem Ipsun dolor sit amet</td>
-                  <td>20</td>
-                  <td>
-                    <div class="btn-group">
-                      <button class="btn btn-primary btnEditarCliente" id="btnEditarCliente"
-                        data-toggle="modal">Incluir</button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-
             </table>
           </div>
 
@@ -288,8 +282,8 @@ MODAL CADASTRAR CLIENTE
             <button type="submit" class="btn btn-primary">Cadastrar Cliente</button>
           </div>
           <?php
-          //$cadastrarCliente = new ControllerClientes();
-          //$cadastrarCliente->ctrCriarCliente();
+          $cadastrarCliente = new ControllerClientes();
+          $cadastrarCliente->ctrCriarCliente();
           ?>
         </form>
       </div>

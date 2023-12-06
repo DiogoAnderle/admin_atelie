@@ -18,7 +18,7 @@
       <div class="box-header with-border">
         <a href="criar-venda">
           <button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastrarCliente">
-            Cadastrar Cliente
+            Efetuar Venda
           </button>
         </a>
 
