@@ -42,21 +42,23 @@
                     $vendas = ControllerVendas::ctrMostrarVendas($item, $valor);
 
                     if (!$vendas) {
-                      echo '<input type="text" class="form-control" id="novaVenda" name="novaVenda" value="10001" readonly>';
+                      echo '<input type="text" class="form-control" id="novoCodigo" name="novoCodigo" value="10001" readonly>';
 
                     } else {
                       foreach ($vendas as $key => $venda) {
 
                       }
                       $codigo = $venda["codigo"] + 1;
-                      echo '<input type="text" class="form-control" id="novaVenda" name="novaVenda" value="' . $codigo . '" readonly>';
+                      echo '<input type="text" class="form-control" id="novoCodigo" name="novoCodigo" value="' . $codigo . '" readonly>';
                     }
                     ?>
 
                   </div>
                 </div>
 
-                <!-- Vincular Cliente -->
+                <!-----------------------------------------
+                 Vincular Cliente 
+                ------------------------------------------>
                 <div class="form-group">
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-users"></i></span>
@@ -88,13 +90,16 @@
                   </div>
                 </div>
 
-                <!-- Vincular Produto -->
+                <!-----------------------------------------
+                        Adicionar Produto 
+                ------------------------------------------>
 
                 <div class="form-group row novoProduto">
 
 
 
                 </div>
+                <input type="hidden" id="listaProdutos" name="listaProdutos">
 
                 <!-- Botão para Cadastrar Produto -->
                 <br><br>
@@ -113,18 +118,23 @@
                       </thead>
                       <tbody>
                         <tr>
+
                           <td style="width:50%;">
                             <div class="input-group">
                               <input type="number" class="form-control" min="0" id="novoAcrescimoVenda"
                                 name="novoAcrescimoVenda" placeholder="0">
+                              <input type="hidden" name="novoValorAcrescimo" id="novoValorAcrescimo">
+                              <input type="hidden" name="novoValorSemAcrescimo" id="novoValorSemAcrescimo">
                               <span class="input-group-addon"> <i class="fa fa-percent"></i></span>
                             </div>
                           </td>
+
                           <td style="width:50%;">
                             <div class="input-group">
                               <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
                               <input type="number" class="form-control" min="1" id="novoTotalVenda"
-                                name="novoTotalVenda" placeholder="0" readonly>
+                                totalSemAcrescimo="0" name="novoTotalVenda" placeholder="0,00" readonly>
+                              <input type="hidden" name="totalVenda" id="totalVenda">
                             </div>
                           </td>
                         </tr>
@@ -135,30 +145,26 @@
 
                 <hr>
 
-                <!-- Meio de Pagamento -->
+                <!-----------------------------------------
+                          Método de Pagamento 
+                ------------------------------------------>
                 <div class="row">
                   <div class="col-xs-7" style="padding-right:0px ;">
                     <div class="form-group">
-                      <select name="novoMetodoPagamento" id="novoMetodoPagamento" class="form-control">
+                      <select name="novoMetodoPagamento" id="novoMetodoPagamento" class="form-control" required>
                         <option value="">Selecione um método de pagamento</option>
-                        <option value="a Vista">à Vista</option>
-                        <option value="cartaoCredito">Cartão de Débito</option>
-                        <option value="cartaoDebito">Cartão de Débito</option>
+                        <option value="Efetivo">Efetivo</option>
+                        <option value="CC">Cartão de Crédito</option>
+                        <option value="CD">Cartão de Débito</option>
                       </select>
                     </div>
                   </div>
 
-                  <div class="col-xs-5" style="padding-left:0px ;">
-                    <div class="input-group">
-                      <input type="text" class="form-control" id="novoCodigoTransacao" name="novoCodigoTransacao"
-                        placeholder="Código da Transação">
-                      <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                    </div>
-                  </div>
+                  <div class="entradaMetodoPagamento"></div>
+
+                  <input type="hidden" name="listaMetodoPagamento" id="listaMetodoPagamento">
+
                 </div>
-
-
-
 
               </div>
 
@@ -167,11 +173,22 @@
             <div class="box-footer">
               <button type="submit" class="btn btn-primary pull-right">Criar Venda</button>
             </div>
+
+            <?php
+            $criarVenda = new ControllerVendas();
+            $criarVenda->ctrCriarVenda();
+            ?>
           </form>
+
+
         </div>
 
       </div>
-      <!-- Tabela de produtos -->
+
+
+      <!-----------------------------------------
+                  Tabela de Produtos 
+       ------------------------------------------>
       <div class="col-lg-7 hidden-md hidden-sm hidden-xs">
 
         <div class="box box-warning">

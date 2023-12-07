@@ -31,6 +31,9 @@ class ModeloUsuarios
 
         $stmt->null();
     }
+    /* ********************************* 
+           Cadastrar Usuário
+   ********************************* */
 
     public static function mdlCriarUsuario($tabela, $dados)
     {
@@ -57,6 +60,9 @@ class ModeloUsuarios
         $stmt->null();
     }
 
+    /* ********************************* 
+           Editar Usuário
+   ********************************* */
     public static function mdlEditarUsuario($tabela, $dados)
     {
         $stmt = Conexao::conectar()
@@ -84,7 +90,7 @@ class ModeloUsuarios
     }
 
     /* ********************************* 
-            Atualizaar Usuário
+            Atualizar Usuário
     ********************************* */
     static public function mdlAtualizarUsuario($tabela, $item1, $valor1, $item2, $valor2)
     {
@@ -107,7 +113,7 @@ class ModeloUsuarios
 
     }
 
-    
+
     /* ********************************* 
             Excluir Usuário
     ********************************* */
@@ -130,7 +136,7 @@ class ModeloUsuarios
         $stmt->null();
 
     }
-    
+
 
 
 

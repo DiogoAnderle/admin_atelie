@@ -33,7 +33,9 @@ class ModeloClientes
         $stmt->null();
 
     }
-
+    /* ********************************* 
+             Mostrar Cliente
+     ********************************* */
     public static function mdlMostrarClientes($tabela, $item, $valor)
     {
         if ($item != null) {
@@ -59,6 +61,9 @@ class ModeloClientes
         $stmt->null();
     }
 
+    /* ********************************* 
+                 Editar Cliente
+         ********************************* */
     public static function mdlEditarCliente($tabela, $dados)
     {
         $stmt = Conexao::conectar()->prepare(
@@ -86,6 +91,32 @@ class ModeloClientes
 
     }
 
+    /* ********************************* 
+            Atualizar Cliente
+    ********************************* */
+    static public function mdlAtualizarCliente($tabela, $item1, $valor1, $valor)
+    {
+
+        $stmt = Conexao::conectar()->prepare("UPDATE $tabela SET $item1 = :$item1 WHERE id = :id");
+
+        $stmt->bindParam(":" . $item1, $valor1, PDO::PARAM_STR);
+        $stmt->bindParam(":id", $valor, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+
+            return "error";
+        }
+
+        $stmt->close();
+
+        $stmt->null();
+
+    }
+    /* ********************************* 
+                 Excluir Cliente
+         ********************************* */
     public static function mdlExcluirCliente($tabela, $dados)
     {
         $stmt = Conexao::conectar()->prepare("DELETE FROM $tabela WHERE id = :id");
