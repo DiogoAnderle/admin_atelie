@@ -117,6 +117,7 @@ session_start();
         $_GET["rota"] == 'produtos' ||
         $_GET["rota"] == 'vendas' ||
         $_GET["rota"] == 'criar-venda' ||
+        $_GET["rota"] == 'editar-venda' ||
         $_GET["rota"] == 'relatorios' ||
         $_GET["rota"] == 'sair'
       ) {

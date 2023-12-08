@@ -31,56 +31,35 @@
                 <th>Cliente</th>
                 <th>Vendedor</th>
                 <th>Forma de Pagamento</th>
+                <th>Subtotal</th>
                 <th>Total</th>
                 <th>Data</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody>
-              <?php
-              $item = null;
-              $valor = null;
-              $vendas = ControllerVendas::ctrMostrarVendas($item, $valor);
-              foreach ($vendas as $key => $venda) {
-                echo '
-                <tr>
-                  <td style="width: 10px;">' . $venda["id"] . '</td>
-                  <td>' . $venda["codigo"] . '</td>';
-                $itemCliente = "id";
-                $valorCliente = $venda["cliente_id"];
-                $cliente = ControllerClientes::ctrMostrarClientes($itemCliente, $valorCliente);
-                echo '<td>' . $cliente["nome"] . '</td>';
-                $itemVendedor = "id";
-                $valorVendedor = $venda["vendedor_id"];
-                $vendedor = ControllerUsuarios::crtMostrarUsuarios($itemVendedor, $valorVendedor);
-                $nomeVendedor = explode(" ", $vendedor["nome"]);
-                echo '
-                  <td>' . $nomeVendedor[0] . '</td>
-                  <td>' . $venda["metodo_pagamento"] . '</td>
-                  <td>R$ ' . number_format($venda["total"], 2, ",", ".") . '</td>
-                  <td>' . date('d/m/Y H:i:s', strtotime($venda["data_venda"])) . '</td>
-                  <td>
-                    <div class="btn-group">
-                      <button class="btn btn-primary btnImprimirRelatorio" id="" data-toggle="modal"
-                        data-target="#modalEditarCliente" title="Editar"><i class="fa fa-print"></i></button>
 
-                        <button class="btn btn-warning btnEditarVenda" 
-                                idVenda ="' . $venda["id"] . '"
-                                data-toggle="modal" 
-                                data-target="#modalEditarCliente" 
-                                title="Editar"><i class="fa fa-pencil"></i>
-                        </button>
+              <tr>
+                <td style="width: 10px;">1</td>
+                <td>10000123</td>
+                <td>Diogo Anderle</td>
+                <td>Patrícia de Souza Costa</td>
+                <td>TC-12412425346</td>
+                <td>R$ 850,00</td>
+                <td>R$ 1.190,00</td>
+                <td>11/12/2023 08:05:44</td>
+                <td>
+                  <div class="btn-group">
+                    <button class="btn btn-primary btnEditarCliente" id="btnEditarCliente" data-toggle="modal"
+                      data-target="#modalEditarCliente" title="Editar"><i class="fa fa-print"></i></button>
 
-                      <button class="btn btn-danger btnExcluirCliente" title="Excluir">
-                        <i class="fa fa-times"></i></button>
-                    </div>
-                  </td>
-                </tr>';
-              }
-              ?>
-
-            </tbody>
-            <!--
+                    <button class="btn btn-danger btnExcluirCliente" title="Excluir">
+                      <i class="fa fa-times"></i></button>
+                  </div>
+                </td>
+              </tr>
+              </thead>
+              <!--
               <?php
 
 

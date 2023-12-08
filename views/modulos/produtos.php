@@ -30,10 +30,10 @@
                 <th>Descrição</th>
                 <th>Categoria</th>
                 <th>Estoque</th>
-                <th>Preço de compra</th>
-                <th>Preço de venda</th>
+                <th nowrap>Preço compra</th>
+                <th nowrap>Preço venda</th>
                 <th>Dt Cadastro</th>
-                <th>Ações</th>
+                <th style="width: 80px;">Ações</th>
               </tr>
             </thead>
             <tfoot>

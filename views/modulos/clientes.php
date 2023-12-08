@@ -29,8 +29,8 @@
                 <th>Telefone</th>
                 <th>E-mail</th>
                 <th>Profissão</th>
-                <th>Data de Nascimento</th>
-                <th>Total de Compras</th>
+                <th>Dt Nascimento</th>
+                <th>Compras</th>
                 <th>Última Compra</th>
                 <th>Data de Cadastro</th>
                 <th>Ações</th>
@@ -55,8 +55,8 @@
                 <td>' . $cliente["profissao"] . '</td>
                 <td>' . date('d/m/Y', strtotime($cliente["data_nascimento"])) . '</td>
                 <td>' . $cliente["compras"] . '</td>
-                <td>23/11/2023 09:40:22</td>
-                <td>' . date('d/m/Y H:i:s', strtotime($cliente["data_cadastro"])) . '</td>
+                <td>' . date('d/m/Y H:i:s', strtotime($cliente["ultima_compra"])) . '</td>
+                <td>' . date('d/m/Y', strtotime($cliente["data_cadastro"])) . '</td>
                 <td> <div class="btn-group">
                             <button class="btn btn-warning btnEditarCliente" id="btnEditarCliente" idCliente="' . $cliente["id"] . '" data-toggle="modal" data-target="#modalEditarCliente" title="Editar"><i
                                 class="fa fa-pencil"></i></button>

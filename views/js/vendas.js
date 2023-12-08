@@ -31,6 +31,19 @@ $('.tabelaVendas').DataTable({
 
 })
 
+$("#criarVenda").on("click", function () {
+    let cliente = $("#selecionarCliente").val()
+    if (cliente == "") {
+        Swal.fire({
+            icon: 'error',
+            title: 'Selecione um cliente para efetuar uma venda',
+            confirmButtonText: 'Fechar',
+        })
+
+    }
+
+})
+
 /************************************************************
  * Incluir produtos na lista de vendas
  ************************************************************/
@@ -496,3 +509,8 @@ function listarMetodoPagamento() {
         $("#listaMetodoPagamento").val($("#novoMetodoPagamento").val() + "-" + $("#novoCodigoTransacao").val());
     }
 }
+
+$(".btnEditarVenda").click(function () {
+    let idVenda = $(this).attr("idVenda");
+    window.location = "index.php?rota=editar-venda&idVenda=" + idVenda;
+})

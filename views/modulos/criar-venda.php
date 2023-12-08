@@ -63,7 +63,7 @@
                   <div class="input-group">
                     <span class="input-group-addon"><i class="fa fa-users"></i></span>
 
-                    <select name="selecionarCliente" id="selecionarCliente" reauired class="form-control">
+                    <select name="selecionarCliente" id="selecionarCliente" required class="form-control">
                       <option value="">Selecionar Cliente</option>
 
                       <?php
@@ -171,7 +171,7 @@
             </div>
             <br>
             <div class="box-footer">
-              <button type="submit" class="btn btn-primary pull-right">Criar Venda</button>
+              <button type="submit" class="btn btn-primary pull-right" id="criarVenda">Criar Venda</button>
             </div>
 
             <?php
