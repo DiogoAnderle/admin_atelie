@@ -2,7 +2,7 @@
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Criar Venda
+      Editar Venda
     </h1>
     <ol class="breadcrumb">
       <li><a href="inicio"><i class="fa fa-dashboard"></i> Inicio</a></li>
@@ -175,8 +175,8 @@
                             <div class="input-group">
                               <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
                               <input type="number" class="form-control" min="1" id="novoTotalVenda"
-                                totalSemAcrescimo="0" name="novoTotalVenda" value="<?php echo $venda["total"]; ?>"
-                                readonly>
+                                totalSemAcrescimo="<?php echo $venda["subtotal"]; ?>" name="novoTotalVenda"
+                                value="<?php echo $venda["total"]; ?>" readonly>
                               <input type="hidden" name="totalVenda" id="totalVenda"
                                 value="<?php echo $venda["total"]; ?>">
                             </div>

@@ -54,9 +54,14 @@
                 <td>' . $cliente["email"] . '</td>
                 <td>' . $cliente["profissao"] . '</td>
                 <td>' . date('d/m/Y', strtotime($cliente["data_nascimento"])) . '</td>
-                <td>' . $cliente["compras"] . '</td>
-                <td>' . date('d/m/Y H:i:s', strtotime($cliente["ultima_compra"])) . '</td>
-                <td>' . date('d/m/Y', strtotime($cliente["data_cadastro"])) . '</td>
+                <td>' . $cliente["compras"] . '</td>';
+                if ($cliente["ultima_compra"] == "1970-01-01 00:00:00") {
+                  echo '<td>Sem Compras</td>';
+                } else {
+                  echo '<td>' . date('d/m/Y H:i:s', strtotime($cliente["ultima_compra"])) . '</td>';
+                }
+
+                echo '<td>' . date('d/m/Y', strtotime($cliente["data_cadastro"])) . '</td>
                 <td> <div class="btn-group">
                             <button class="btn btn-warning btnEditarCliente" id="btnEditarCliente" idCliente="' . $cliente["id"] . '" data-toggle="modal" data-target="#modalEditarCliente" title="Editar"><i
                                 class="fa fa-pencil"></i></button>

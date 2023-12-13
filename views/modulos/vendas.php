@@ -66,13 +66,13 @@
 
                         <button class="btn btn-warning btnEditarVenda" 
                                 idVenda ="' . $venda["id"] . '"
-                                data-toggle="modal" 
-                                data-target="#modalEditarCliente" 
                                 title="Editar"><i class="fa fa-pencil"></i>
                         </button>
 
-                      <button class="btn btn-danger btnExcluirCliente" title="Excluir">
-                        <i class="fa fa-times"></i></button>
+                      <button class="btn btn-danger btnExcluirVenda" 
+                              idVenda ="' . $venda["id"] . '"
+                              title="Excluir"><i class="fa fa-times"></i>
+                      </button>
                     </div>
                   </td>
                 </tr>';
@@ -118,6 +118,12 @@
 -->
             </tbody>
           </table>
+
+          <?php
+          $excluirVenda = new ControllerVendas();
+          $excluirVenda->ctrExcluirVenda();
+          ?>
+
         </div>
 
       </div>
@@ -126,8 +132,3 @@
   </section>
 
 </div>
-
-<?php
-//$excluirCliente = new ControllerClientes();
-//$excluirCliente->ctrExcluirCliente();
-?>

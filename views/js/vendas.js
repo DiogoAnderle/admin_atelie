@@ -124,6 +124,7 @@ $(".tabelaVendas").on("click", "button.adicionarProduto", function () {
     })
 })
 
+
 /***********************************************
  habilitar botão para incluir novamente mesmo 
  estando em outra aba da tabela de produtos
@@ -416,7 +417,7 @@ $("#novoMetodoPagamento").change(function () {
                 <div class="input-group">
                     <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
                     <input type="text" class="form-control" id="novoValorEfetivo" name="novoValorEfetivo"
-                            required placeholder="0,00">
+                        placeholder="0,00">
                 </div>
             </div>
             <div class="col-xs-4" id="capturarCambioEfetivo" style="padding-left:0px ;">
@@ -436,7 +437,7 @@ $("#novoMetodoPagamento").change(function () {
             .html(`
             <div class="col-xs-6" style="padding-left:0px ;">
                 <div class="input-group">
-                    <input type="text" class="form-control" id="novoCodigoTransacao" name="novoCodigoTransacao" required
+                    <input type="text" class="form-control" id="novoCodigoTransacao" name="novoCodigoTransacao"
                         placeholder="Código da Transação">
                     <span class="input-group-addon"><i class="fa fa-lock"></i></span>
                 </div>
@@ -507,10 +508,85 @@ function listarMetodoPagamento() {
         $("#listaMetodoPagamento").val("Efetivo");
     } else {
         $("#listaMetodoPagamento").val($("#novoMetodoPagamento").val() + "-" + $("#novoCodigoTransacao").val());
+        alert($("#novoCodigoTransacao").val())
     }
 }
 
 $(".btnEditarVenda").click(function () {
     let idVenda = $(this).attr("idVenda");
     window.location = "index.php?rota=editar-venda&idVenda=" + idVenda;
+})
+
+/*=============================================
+FUNÇÃO PARA DESATIVAR OS BOTÕES DE ADICIONAR
+QUANDO UM PRODUTO JÁ ESTEJA ADICIONADO AO PEDIDO
+=============================================*/
+
+function removerAcaoAdicionarProduto() {
+
+    //Capturamos todos los id de productos que fueron elegidos en la venta
+    var idProdutos = $(".removerProduto");
+
+    //Capturamos todos los botones de agregar que aparecen en la tabla
+    var botoesTabela = $(".tabelaVendas tbody button.adicionarProduto");
+
+    //Recorremos en un ciclo para obtener los diferentes idProductos que fueron agregados a la venta
+    for (var i = 0; i < idProdutos.length; i++) {
+
+        //Capturamos los Id de los productos agregados a la venta
+        var botao = $(idProdutos[i]).attr("idProduto");
+
+        //Hacemos un recorrido por la tabla que aparece para desactivar los botones de agregar
+        for (var j = 0; j < botoesTabela.length; j++) {
+
+            if ($(botoesTabela[j]).attr("idProduto") == botao) {
+
+                $(botoesTabela[j]).removeClass("btn-primary adicionarProduto");
+                $(botoesTabela[j]).addClass("btn-default");
+
+            }
+        }
+
+    }
+
+}
+
+/*=============================================
+CADA VEZ QUE A TABELA É CARREGADA A FUNÇÃO É
+EXECUTADA
+=============================================*/
+
+$('.tabelaVendas').on('draw.dt', function () {
+
+    removerAcaoAdicionarProduto();
+
+})
+
+
+
+
+
+/*=============================================
+EXCLUIR VENDA
+=============================================*/
+$(".btnExcluirVenda").click(function () {
+    let idVenda = $(this).attr("idVenda");
+
+    Swal.fire({
+        title: `Tem certeza que deseja excluir a venda #${idVenda}?`,
+        text: "Se não está certo, pode cancelar a exclusão!",
+        icon: 'error',
+        showCancelButton: true,
+        confirmButtonColor: '#d33',
+        cancelButtonColor: '#3085d6',
+        cancelButtonText: 'Cancelar',
+        confirmButtonText: 'Sim, excluir venda'
+    }).then(function (result) {
+        if (result.value) {
+
+            window.location = "index.php?rota=vendas&idVenda=" + idVenda;
+        }
+
+    })
+
 })

@@ -4,6 +4,9 @@ require_once "conexao.php";
 
 class ModeloVendas
 {
+    /***********************************************
+     * MOSTRAR VENDAS
+     ***********************************************/
     public static function mdlMostrarVendas($tabela, $item, $valor)
     {
         if ($item != null) {
@@ -27,7 +30,9 @@ class ModeloVendas
 
         $stmt->null();
     }
-
+    /***********************************************
+     * CRIAR VENDA
+     ***********************************************/
     public static function mdlCriarVenda($tabela, $dados)
     {
         $stmt = Conexao::conectar()->prepare("INSERT INTO $tabela(codigo, cliente_id, vendedor_id, produtos, acrescimo, subtotal, total, metodo_pagamento) VALUES(:codigo, :cliente_id, :vendedor_id, :produtos, :acrescimo, :subtotal, :total, :metodo_pagamento)");
@@ -50,7 +55,9 @@ class ModeloVendas
         $stmt->null();
 
     }
-
+    /***********************************************
+     * EDITAR VENDA
+     ***********************************************/
     public static function mdlEditarVenda($tabela, $dados)
     {
         $stmt = Conexao::conectar()->prepare("UPDATE $tabela SET codigo = :codigo, cliente_id = :cliente_id, vendedor_id = :vendedor_id, produtos = :produtos, acrescimo =  :acrescimo, subtotal = :subtotal, total = :total, metodo_pagamento = :metodo_pagamento WHERE codigo = :codigo");
@@ -75,5 +82,24 @@ class ModeloVendas
     }
 
 
+    /***********************************************
+     * EXCLUIR VENDA
+     ***********************************************/
+
+    public static function mdlExcluirVenda($tabela, $dados)
+    {
+        $stmt = Conexao::conectar()->prepare("DELETE FROM $tabela WHERE id = :id");
+        $stmt->bindParam(":id", $dados, PDO::PARAM_INT);
+
+        if ($stmt->execute()) {
+            return "ok";
+        } else {
+            return "error";
+        }
+        $stmt->close();
+
+        $stmt->null();
+
+    }
 }
 
