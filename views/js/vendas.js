@@ -590,3 +590,12 @@ $(".btnExcluirVenda").click(function () {
     })
 
 })
+
+/*=============================================
+IMPRIMIR FATURA
+=============================================*/
+$(".tabelas").on("click", "button.btnImprimirFatura", function () {
+    let codigoVenda = $(this).attr("codigoVenda")
+    window.open("extensions/tcpdf/pdf/fatura.php", "_blank")
+})
+

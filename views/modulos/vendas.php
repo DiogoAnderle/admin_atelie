@@ -61,8 +61,9 @@
                   <td>' . date('d/m/Y H:i:s', strtotime($venda["data_venda"])) . '</td>
                   <td>
                     <div class="btn-group">
-                      <button class="btn btn-primary btnImprimirRelatorio" id="" data-toggle="modal"
-                        data-target="#modalEditarCliente" title="Editar"><i class="fa fa-print"></i></button>
+                      <button class="btn btn-primary btnImprimirFatura" codigoVenda ="' . $venda["codigo"] . '" title="Imprimir">
+                        <i class="fa fa-print"></i>
+                      </button>
 
                         <button class="btn btn-warning btnEditarVenda" 
                                 idVenda ="' . $venda["id"] . '"
