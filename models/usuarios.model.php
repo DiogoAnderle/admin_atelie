@@ -12,13 +12,13 @@ class ModeloUsuarios
 
         if ($item != null) {
 
-            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item");
+            @$stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item");
 
-            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            @$stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
-            $stmt->execute();
+            @$stmt->execute();
 
-            return $stmt->fetch();
+            return @$stmt->fetch();
         } else {
             $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela");
 
@@ -40,8 +40,8 @@ class ModeloUsuarios
 
         $stmt = Conexao::conectar()
             ->prepare("INSERT INTO 
-            $tabela(nome, usuario, senha, perfil, imagem) 
-            VALUES(:nome, :usuario, :senha, :perfil, :imagem)");
+            $tabela(nome, usuario, senha, perfil, estado, ultimo_login, imagem) 
+            VALUES(:nome, :usuario, :senha, :perfil, 1, null, :imagem)");
 
         $stmt->bindParam(":nome", $dados["nome"], PDO::PARAM_STR);
         $stmt->bindParam(":usuario", $dados["usuario"], PDO::PARAM_STR);

@@ -30,7 +30,6 @@
                 <th>Código fatura</th>
                 <th>Cliente</th>
                 <th>Vendedor</th>
-                <th>Forma de Pagamento</th>
                 <th>Total</th>
                 <th>Data</th>
                 <th>Ações</th>
@@ -56,7 +55,6 @@
                 $nomeVendedor = explode(" ", $vendedor["nome"]);
                 echo '
                   <td>' . $nomeVendedor[0] . '</td>
-                  <td>' . $venda["metodo_pagamento"] . '</td>
                   <td>R$ ' . number_format($venda["total"], 2, ",", ".") . '</td>
                   <td>' . date('d/m/Y H:i:s', strtotime($venda["data_venda"])) . '</td>
                   <td>

@@ -189,27 +189,6 @@
 
                 <hr>
 
-                <!-----------------------------------------
-                          Método de Pagamento 
-                ------------------------------------------>
-                <div class="row">
-                  <div class="col-xs-7" style="padding-right:0px ;">
-                    <div class="form-group">
-                      <select name="novoMetodoPagamento" id="novoMetodoPagamento" class="form-control" required>
-                        <option value="">Selecione um método de pagamento</option>
-                        <option value="Efetivo">Efetivo</option>
-                        <option value="CC">Cartão de Crédito</option>
-                        <option value="CD">Cartão de Débito</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div class="entradaMetodoPagamento"></div>
-
-                  <input type="hidden" name="listaMetodoPagamento" id="listaMetodoPagamento">
-
-                </div>
-
               </div>
 
             </div>

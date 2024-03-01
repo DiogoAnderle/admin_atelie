@@ -42,6 +42,7 @@ $(".novaImagem").change(function () {
  * Editar usuário
  ******************************/
 $(document).on("click", ".btnEditarUsuario", function () {
+
   const idUsuario = $(this).attr("idUsuario");
 
   const dados = new FormData();
@@ -56,6 +57,7 @@ $(document).on("click", ".btnEditarUsuario", function () {
     processData: false,
     dataType: "json",
     success: function (resposta) {
+      $("#editarIdUsuario").val(resposta["id"]);
       $("#editarNome").val(resposta["nome"]);
       $("#editarUsuario").val(resposta["usuario"]);
 
@@ -65,6 +67,8 @@ $(document).on("click", ".btnEditarUsuario", function () {
       $("#imagemAtual").val(resposta["imagem"]);
 
       $("#senhaAtual").val(resposta["senha"]);
+
+      console.log(resposta["id"])
 
       if (resposta["imagem"]) {
         $(".previsualizar").attr("src", resposta["imagem"]);
@@ -180,3 +184,4 @@ $(document).on("click", ".btnExcluirUsuario", function () {
     }
   });
 });
+

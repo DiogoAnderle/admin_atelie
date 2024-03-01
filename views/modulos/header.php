@@ -18,14 +18,15 @@
         <li class="dropdown user user-menu">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
 
-            <?php 
-              if ($_SESSION["imagem"] != "") {
-                echo '<img src="'.$_SESSION["imagem"].'" class="user-image" alt="User Image">';
-              }else {
-                echo '<img src="views\img\usuarios\user-default.png" class="user-image" alt="User Image">';
-              }
+            <?php
+            if ($_SESSION["imagem"] != "" || $_SESSION["imagem"] != null) {
+              echo '<img src="' . $_SESSION["imagem"] . '" class="user-image" alt="User Image" id="userImagem" sessionId="' . $_SESSION["id"] . '">';
+
+            } else {
+              echo '<img src="views\img\usuarios\user-default.png" class="user-image" alt="User Image" id="userImagem">';
+            }
             ?>
-            
+
 
             <span class="hidden-xs">
               <?php echo $_SESSION["nome"] ?>

@@ -402,73 +402,6 @@ $("#novoAcrescimoVenda").change(function () {
     calcularAcrescimo();
 })
 
-/***********************************************
-Selecionar Metodo de Pagamento
-***********************************************/
-$("#novoMetodoPagamento").change(function () {
-    let metodo = $(this).val();
-
-    if (metodo == "Efetivo") {
-        $(this).parent().parent().removeClass('col-xs-7')
-        $(this).parent().parent().addClass('col-xs-4')
-        $(this).parent().parent().parent().children('.entradaMetodoPagamento')
-            .html(`
-            <div class="col-xs-4" style="padding-left:0px ;">
-                <div class="input-group">
-                    <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
-                    <input type="text" class="form-control" id="novoValorEfetivo" name="novoValorEfetivo"
-                        placeholder="0,00">
-                </div>
-            </div>
-            <div class="col-xs-4" id="capturarCambioEfetivo" style="padding-left:0px ;">
-                <div class="input-group">
-                    <span class="input-group-addon" style="font-size:1.1em; font-weight:700">R$</span>
-                    <input type="text" class="form-control" id="novoCambioEfetivo" name="novoCambioEfetivo"
-                           readonly required placeholder="0,00">
-                </div>
-            </div>`
-            )
-        listarMetodoPagamento()
-    } else {
-
-        $(this).parent().parent().removeClass('col-xs-4')
-        $(this).parent().parent().addClass('col-xs-6')
-        $(this).parent().parent().parent().children('.entradaMetodoPagamento')
-            .html(`
-            <div class="col-xs-6" style="padding-left:0px ;">
-                <div class="input-group">
-                    <input type="text" class="form-control" id="novoCodigoTransacao" name="novoCodigoTransacao"
-                        placeholder="Código da Transação">
-                    <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                </div>
-            </div>`
-            )
-
-    }
-})
-
-/***********************************************
-            Pagamento Efetivo
-***********************************************/
-
-$(".formularioVenda").on("change", "input#novoValorEfetivo", function () {
-
-    let efetivo = ($(this).val()).replace(",", ".")
-    let cambio = (Number(efetivo) - Number($("#novoTotalVenda").val())).toFixed(2);
-    let novoCambioEfetivo = $(this).parent().parent().parent().children("#capturarCambioEfetivo").children('.input-group').children("#novoCambioEfetivo")
-
-    novoCambioEfetivo.val(cambio.replace(".", ","))
-
-})
-
-/***********************************************
-            Pagamento Cartao
-***********************************************/
-
-$(".formularioVenda").on("change", "input#novoCodigoTransacao", function () {
-    listarMetodoPagamento()
-})
-
 
 /***********************************************
             Listar todos os produtos
@@ -496,21 +429,6 @@ function agruparProdutos() {
     $("#listaProdutos").val(JSON.stringify(listaProdutos));
 }
 
-/***********************************************
-            Listar metodo pagamento
-***********************************************/
-
-function listarMetodoPagamento() {
-
-    let listarMetodos = "";
-
-    if ($("#novoMetodoPagamento").val() == "Efetivo") {
-        $("#listaMetodoPagamento").val("Efetivo");
-    } else {
-        $("#listaMetodoPagamento").val($("#novoMetodoPagamento").val() + "-" + $("#novoCodigoTransacao").val());
-        alert($("#novoCodigoTransacao").val())
-    }
-}
 
 $(".btnEditarVenda").click(function () {
     let idVenda = $(this).attr("idVenda");

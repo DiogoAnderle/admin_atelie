@@ -24,8 +24,8 @@ class ControllerUsuarios
                 $resposta = ModeloUsuarios::MdlMostrarUsuarios($tabela, $item, $valor);
 
                 if (
-                    $resposta["usuario"] == $_POST['usuario'] &&
-                    $resposta["senha"] == $encriptar
+                    @$resposta["usuario"] == $_POST['usuario'] &&
+                    @$resposta["senha"] == $encriptar
                 ) {
                     if ($resposta["estado"] == 1) {
                         $_SESSION["initSession"] = "ok";
@@ -66,6 +66,7 @@ class ControllerUsuarios
             }
         }
     }
+
     /* ********************************* 
                 Salvar Usuário
     ********************************* */
@@ -82,8 +83,10 @@ class ControllerUsuarios
                 /* *****************************
                  * validar imagem
                  **************************** */
-                $rota = '';
-                if (isset($_FILES["novaImagem"]["tmp_name"])) {
+                $rota = 'views/img/usuarios/user-default.png';
+
+
+                if (isset($_FILES["novaImagem"]["tmp_name"]) && $_FILES["novaImagem"]["tmp_name"] != "") {
 
                     list($largura, $altura) = getimagesize($_FILES["novaImagem"]["tmp_name"]);
 
@@ -105,9 +108,8 @@ class ControllerUsuarios
                         /* *****************************
                          * guardar a imagem no diretório
                          **************************** */
-                        $aleatorio = mt_rand(100, 999);
 
-                        $rota = "views/img/usuarios/" . $_POST['usuario'] . "/" . $aleatorio . ".jpg";
+                        $rota = "views/img/usuarios/" . $_POST['usuario'] . "/" . $_POST['usuario'] . ".jpg";
 
                         $origem = imagecreatefromjpeg($_FILES["novaImagem"]["tmp_name"]);
 
@@ -122,9 +124,8 @@ class ControllerUsuarios
                         /* *****************************
                          * guardar a imagem no diretório
                          **************************** */
-                        $aleatorio = mt_rand(100, 999);
 
-                        $rota = "views/img/usuarios/" . $_POST['usuario'] . "/" . $aleatorio . ".png";
+                        $rota = "views/img/usuarios/" . $_POST['usuario'] . "/" . $_POST['usuario'] . ".png";
 
                         $origem = imagecreatefrompng($_FILES["novaImagem"]["tmp_name"]);
 
@@ -158,13 +159,13 @@ class ControllerUsuarios
                         icon: 'success',
                         title: 'Sucesso',
                         text: 'Usuário incluído com sucesso.',
-                        showConfirmButton: 'false',
+                        confirmButtonText: 'Fechar',
 
                     }).then((result) => {
-                        if(result.value){
+                        if(result.isConfirmed){
                             window.location = 'usuarios';}
                     });
-                
+           
                     </script>";
                 }
 
@@ -250,9 +251,8 @@ class ControllerUsuarios
                         /* *****************************
                          * guardar a imagem no diretório
                          **************************** */
-                        $aleatorio = mt_rand(100, 999);
 
-                        $rota = "views/img/usuarios/" . $_POST['editarUsuario'] . "/" . $aleatorio . ".jpg";
+                        $rota = "views/img/usuarios/" . $_POST['editarUsuario'] . "/" . $_POST['editarUsuario'] . ".jpg";
 
                         $origem = imagecreatefromjpeg($_FILES["editarImagem"]["tmp_name"]);
 
@@ -267,9 +267,7 @@ class ControllerUsuarios
                         /* *****************************
                          * guardar a imagem no diretório
                          **************************** */
-                        $aleatorio = mt_rand(100, 999);
-
-                        $rota = "views/img/usuarios/" . $_POST['editarUsuario'] . "/" . $aleatorio . ".png";
+                        $rota = "views/img/usuarios/" . $_POST['editarUsuario'] . "/" . $_POST['editarUsuario'] . ".png";
 
                         $origem = imagecreatefrompng($_FILES["editarImagem"]["tmp_name"]);
 
@@ -329,13 +327,13 @@ class ControllerUsuarios
                         icon: 'success',
                         title: 'Sucesso',
                         text: 'Usuário atualizado com sucesso.',
-                        showConfirmButton: 'false',
-                        timer: '1500',
-
                     }).then((result) => {
                         if(result.value){
-                            window.location = 'usuarios';}
+                            window.location = 'usuarios';
+                             
+                        }
                     });
+                   
                 
                     </script>";
                 }
@@ -350,7 +348,9 @@ class ControllerUsuarios
 
                     }).then((result) => {
                         if(result.value){
-                            window.location = 'usuarios';}
+                            window.location = 'usuarios';
+                            
+                        }
                     });
                 
                     </script>";
@@ -389,7 +389,7 @@ class ControllerUsuarios
                         window.location = 'usuarios';}
                 });
             
-                </script>";
+                </>";
             }
         }
     }

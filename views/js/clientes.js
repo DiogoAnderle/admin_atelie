@@ -27,8 +27,8 @@ $(".btnEditarCliente").click(function () {
 });
 
 /******************************
- * Excluir ClientebtnExcluirCliente
- * ******************************/
+ * Excluir Cliente
+******************************/
 
 $(".btnExcluirCliente").click(function () {
   var idCliente = $(this).attr("idCliente");

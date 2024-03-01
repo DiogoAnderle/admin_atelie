@@ -20,8 +20,6 @@ class ModeloClientes
         $stmt->bindParam(":profissao", $dados["profissao"], PDO::PARAM_STR);
         $stmt->bindParam(":data_nascimento", $dados["data_nascimento"], PDO::PARAM_STR);
 
-        echo json_encode($stmt);
-
         if ($stmt->execute()) {
             return "ok";
         } else {
@@ -126,7 +124,8 @@ class ModeloClientes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            return "error";
+            echo $stmt;
+            //return "error";
         }
 
         $stmt->close();

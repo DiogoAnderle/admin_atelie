@@ -49,7 +49,7 @@
                 <td>' . $usuario["nome"] . '</td>
                 <td>' . $usuario["usuario"] . '</td>';
                 if ($usuario["imagem"] != "") {
-                  echo '<td><img src="' . $usuario["imagem"] . '" width="40px" alt="user-image" srcset=""></td>';
+                  echo '<td><img src="' . $usuario["imagem"] . '" width="40px" alt="user-image" userId="' . $usuario["id"] . '"srcset=""></td>';
                 } else {
 
                   echo '<td><img src="views\img\usuarios\user-default.png" width="40px" alt="user-image"></td>';
@@ -64,12 +64,17 @@
                   echo ' <td><button class="btn btn-danger btn-xs btnAtivar" idUsuario="' . $usuario['id'] . '" estadoUsuario="1">Inativo</button></td>';
                 }
 
+                if ($usuario["ultimo_login"] != null) {
 
-                echo '<td>' . date('d/m/Y h:m:s', strtotime($usuario["ultimo_login"])) . '</td>
-                
-                <td>
+                  echo '<td>' . date('d/m/Y h:m:s', strtotime($usuario["ultimo_login"])) . '</td>';
+                } else {
+
+                  echo '<td>Usuário ainda não fez login</td>';
+                }
+
+                echo '<td>
                   <div class="btn-group">
-                    <button class="btn btn-warning btnEditarUsuario"  idUsuario="' . $usuario["id"] . '"  title="Editar" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
+                    <button class="btn btn-warning btnEditarUsuario" id="' . $usuario["id"] . '" idUsuario="' . $usuario["id"] . '"  title="Editar" data-toggle="modal" data-target="#modalEditarUsuario"><i class="fa fa-pencil"></i></button>
                     <button class="btn btn-danger btnExcluirUsuario" 
                       idUsuario="' . $usuario["id"] . '" 
                       imagemUsuario="' . $usuario["imagem"] . '" 
@@ -106,6 +111,7 @@ MODAL CRIAR USUÁRIO
     <div class="modal-content">
 
       <form role="form" method="post" enctype="multipart/form-data">
+        <input type="hidden">
 
         <div class="modal-header bg-primary">
 
@@ -131,21 +137,22 @@ MODAL CRIAR USUÁRIO
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="usuario" id="usuario" placeholder="Usuario">
+                <input type="text" class="form-control input-lg" name="usuario" id="usuario" placeholder="Usuario"
+                  required>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="senha" placeholder="Senha">
+                <input type="password" class="form-control input-lg" name="senha" placeholder="Senha" required>
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="perfil">
+                <select class="form-control input-lg" name="perfil" required>
                   <option value="" id="perfil">--Selecione um perfil--</option>
                   <option value="Administrador">Administrador</option>
                   <option value="Especial">Especial</option>
@@ -204,7 +211,7 @@ MODAL EDITAR USUÁRIO
 
         <div class="modal-body">
           <div class="box-body">
-
+            <input type="hidden" class="form-control input-lg" id="editarIdUsuario" name="editarIdUsuario" value="">
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>

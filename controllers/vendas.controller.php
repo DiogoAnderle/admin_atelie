@@ -87,7 +87,6 @@ class ControllerVendas
                 "acrescimo" => $_POST["novoValorAcrescimo"],
                 "subtotal" => $_POST["novoValorSemAcrescimo"],
                 "total" => $_POST["totalVenda"],
-                "metodo_pagamento" => $_POST["novoMetodoPagamento"],
             );
 
             $resposta = ModeloVendas::mdlCriarVenda($tabela, $dados);
@@ -260,7 +259,6 @@ class ControllerVendas
                 "acrescimo" => $_POST["novoValorAcrescimo"],
                 "subtotal" => $_POST["novoValorSemAcrescimo"],
                 "total" => $_POST["totalVenda"],
-                "metodo_pagamento" => $_POST["novoMetodoPagamento"],
             );
 
             $resposta = ModeloVendas::mdlEditarVenda($tabela, $dados);

@@ -16,7 +16,8 @@
 
     <div class="box">
       <div class="box-header with-border">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastrarCliente">
+        <button class="btn btn-primary" id="btnCadastrarCliente" data-toggle="modal"
+          data-target="#modalCadastrarCliente">
           Cadastrar Cliente
         </button>
 
@@ -52,10 +53,14 @@
                 <td>' . $cliente["nome"] . '</td>
                 <td>' . $cliente["telefone"] . '</td>
                 <td>' . $cliente["email"] . '</td>
-                <td>' . $cliente["profissao"] . '</td>
-                <td>' . date('d/m/Y', strtotime($cliente["data_nascimento"])) . '</td>
-                <td>' . $cliente["compras"] . '</td>';
-                if ($cliente["ultima_compra"] == "1970-01-01 00:00:00") {
+                <td>' . $cliente["profissao"] . '</td>';
+                if ($cliente["data_nascimento"] != null) {
+                  echo '<td>' . date('d/m/Y', strtotime($cliente["data_nascimento"])) . '</td>';
+                } else {
+                  echo '<td>Não informada</td>';
+                }
+                echo '<td>' . $cliente["compras"] . '</td>';
+                if ($cliente["ultima_compra"] == "1970-01-01 00:00:00" || $cliente["ultima_compra"] == null) {
                   echo '<td>Sem Compras</td>';
                 } else {
                   echo '<td>' . date('d/m/Y H:i:s', strtotime($cliente["ultima_compra"])) . '</td>';
@@ -116,8 +121,8 @@ MODAL CADASTRAR CLIENTE
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="text" class="form-control input-lg" id="novoCliente" name="novoCliente" placeholder="Nome:"
-                  required>
+                <input type="text" class="form-control input-lg" id="novoCliente" name="novoCliente"
+                  placeholder="Nome:">
               </div>
             </div>
 
@@ -204,13 +209,13 @@ MODAL EDITAR CLIENTE
 
         <div class="modal-body">
           <div class="box-body">
+            <input type="hidden" id="idCliente" name="idCliente">
 
             <!-- Nome -->
             <div class="form-group">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input type="hidden" id="idCliente" name="idCliente">
-                <input type="text" class="form-control input-lg" id="editarCliente" name="editarCliente" required>
+                <input type="text" class="form-control input-lg" id="editarCliente" name="editarCliente">
               </div>
             </div>
 
@@ -274,3 +279,11 @@ MODAL EDITAR CLIENTE
 $excluirCliente = new ControllerClientes();
 $excluirCliente->ctrExcluirCliente();
 ?>
+
+<script>
+  $(document).ready(function () {
+    //const idUsuario = document.querySelector("[idCliente='7']").click()
+
+  })
+
+</script>
