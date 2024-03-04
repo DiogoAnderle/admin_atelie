@@ -411,4 +411,13 @@ class ControllerVendas
             }
         }
     }
+
+    public static function ctrSomaTotaldeVendas()
+    {
+        $tabela = 'vendas';
+
+        $resposta = ModeloVendas::mdlSomaTotaldeVendas($tabela);
+
+        return $resposta;
+    }
 }

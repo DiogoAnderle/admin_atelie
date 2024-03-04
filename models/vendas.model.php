@@ -100,5 +100,19 @@ class ModeloVendas
         $stmt->null();
 
     }
+
+    public static function mdlSomaTotaldeVendas($tabela)
+    {
+        $stmt = Conexao::conectar()->prepare("SELECT SUM(total) as total FROM $tabela");
+
+        $stmt->execute();
+
+        return $stmt->fetch();
+
+        $stmt->close();
+
+        $stmt->null;
+
+    }
 }
 

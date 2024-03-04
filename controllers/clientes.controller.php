@@ -92,7 +92,6 @@ class ControllerClientes
 
                     </script>";
             }
-            echo 'h1' . json_encode($dadosTemp) . '</h1>';
         }
     }
     /*==================================
@@ -180,7 +179,6 @@ class ControllerClientes
                         }
 
                     </script>";
-                unset($dadosTemp);
 
             }
 

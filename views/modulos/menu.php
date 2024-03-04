@@ -47,17 +47,18 @@
         </a>
         <ul class="treeview-menu">
           <li>
-            <a href="vendas">
-              <i class="fa fa-circle-o"></i>
-              <span>Administrar Vendas</span>
-            </a>
-          </li>
-          <li>
             <a href="criar-venda">
               <i class="fa fa-circle-o"></i>
               <span>Criar Venda</span>
             </a>
           </li>
+          <li>
+            <a href="vendas">
+              <i class="fa fa-circle-o"></i>
+              <span>Administrar Vendas</span>
+            </a>
+          </li>
+
           <li>
             <a href="relatorios">
               <i class="fa fa-circle-o"></i>
