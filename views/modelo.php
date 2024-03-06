@@ -92,6 +92,7 @@ session_start();
   <!-- Morris.js Charts https://morrisjs.github.io/morris.js/ -->
   <script src="views/bower_components/raphael/raphael.min.js"></script>
   <script src="views/bower_components/morris.js/morris.min.js"></script>
+  <script src="views/bower_components/chart.js/chart.js"></script>
 
 
 

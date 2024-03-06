@@ -150,8 +150,9 @@ EOF;
 		foreach ($produtos as $key => $item) {
 			$itemProduto = "descricao";
 			$valorProduto = $item["descricao"];
+			$ordem = "id";
 
-			$respostaProduto = ControllerProdutos::ctrMostrarProdutos($itemProduto, $valorProduto);
+			$respostaProduto = ControllerProdutos::ctrMostrarProdutos($itemProduto, $valorProduto, $ordem);
 
 			$valorUnitario = number_format($item["preco"], 2, ",", ".");
 			$valorTotal = number_format($item["total"], 2, ",", ".");

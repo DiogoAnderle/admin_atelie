@@ -38,7 +38,9 @@ class ControllerVendas
                 $item = "id";
                 $valor = $value["id"];
 
-                $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $valor);
+                $ordem = 'codigo';
+
+                $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $valor, $ordem);
 
                 $item1a = "vendas";
                 $valor1a = $value["quantidade"] + $trazerProduto["vendas"];

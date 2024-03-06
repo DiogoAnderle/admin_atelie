@@ -26,13 +26,35 @@
 
         </div>
       </div>
+
       <div class="box-body">
+
         <div class="row">
+
           <div class="col-xs-12">
             <?php
             include "relatorios/grafico-vendas.php"
               ?>
           </div>
+
+          <div class="col-md-6 col-xs-12">
+            <?php
+            include "relatorios/produtos-mais-vendidos.php"
+              ?>
+          </div>
+
+          <div class="col-md-6 col-xs-12">
+            <?php
+            include "relatorios/vendedores.php"
+              ?>
+          </div>
+
+          <div class="col-md-6 col-xs-12">
+            <?php
+            include "relatorios/clientes.php"
+              ?>
+          </div>
+
         </div>
 
       </div>

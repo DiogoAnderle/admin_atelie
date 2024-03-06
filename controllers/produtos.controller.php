@@ -6,10 +6,10 @@ class ControllerProdutos
                  Mostrar Produtos
     ==============================================*/
 
-    public static function ctrMostrarProdutos($item, $valor)
+    public static function ctrMostrarProdutos($item, $valor, $ordem)
     {
         $tabela = "produtos";
-        $resposta = ModelProdutos::mdlMostrarProdutos($tabela, $item, $valor);
+        $resposta = ModelProdutos::mdlMostrarProdutos($tabela, $item, $valor, $ordem);
         return $resposta;
     }
 
@@ -305,5 +305,12 @@ class ControllerProdutos
             }
 
         }
+    }
+
+    static public function crtMostrarSomaVendas()
+    {
+        $tabela = "produtos";
+        $resposta = ModelProdutos::mdlMostrarSomaVendas($tabela);
+        return $resposta;
     }
 }

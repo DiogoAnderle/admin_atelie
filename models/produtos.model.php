@@ -8,19 +8,19 @@ class ModelProdutos
     /*==============================================
                 Mostrar Produtos
     ==============================================*/
-    public static function mdlMostrarProdutos($tabela, $item, $valor)
+    public static function mdlMostrarProdutos($tabela, $item, $valor, $ordem)
     {
 
         if ($item != null) {
 
-            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item ORDER BY id DESC");
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item ORDER BY $ordem DESC");
             $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
             $stmt->execute();
             return $stmt->fetch();
 
         } else {
 
-            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela");
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela ORDER BY $ordem DESC");
             $stmt->execute();
             return $stmt->fetchAll();
 
@@ -137,5 +137,17 @@ class ModelProdutos
 
         $stmt->null();
 
+    }
+
+    public static function mdlMostrarSomaVendas($tabela)
+    {
+        $stmt = Conexao::conectar()->prepare("SELECT SUM(vendas) AS total FROM $tabela");
+        $stmt->execute();
+
+        return $stmt->fetch();
+
+        $stmt->close();
+
+        $stmt->null();
     }
 }

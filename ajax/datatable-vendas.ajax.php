@@ -13,7 +13,8 @@ class TabelaProdutosVendas
 
         $item = null;
         $valor = null;
-        $produtos = ControllerProdutos::ctrMostrarProdutos($item, $valor);
+        $ordem = "id";
+        $produtos = ControllerProdutos::ctrMostrarProdutos($item, $valor, $ordem);
 
         $dadosJson = '{
             "data": [';

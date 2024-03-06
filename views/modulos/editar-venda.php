@@ -95,7 +95,9 @@
 
                     $item = "id";
                     $valor = $produto["id"];
-                    $resposta = ControllerProdutos::ctrMostrarProdutos($item, $valor);
+                    $ordem = "id";
+
+                    $resposta = ControllerProdutos::ctrMostrarProdutos($item, $valor, $ordem);
 
                     $estoqueAntigo = $produto["quantidade"] + $resposta["estoque"];
                     echo '
