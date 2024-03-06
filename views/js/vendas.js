@@ -1,4 +1,13 @@
 /************************************************************
+ * VARIAVEL LOCAL STORAGE
+ ************************************************************/
+if (localStorage.getItem("capturarPeriodo") != null) {
+    $("#daterange-btn span").html(localStorage.getItem("capturarPeriodo"));
+} else {
+    $("#daterange-btn span").html('<i class="fa fa-calendar"></i> Filtrar por período');
+}
+
+/************************************************************
  * Carregar produtos da tabela Dinamicamente via AJAX
  ************************************************************/
 $.ajax({
@@ -430,10 +439,7 @@ function agruparProdutos() {
 }
 
 
-$(".btnEditarVenda").click(function () {
-    let idVenda = $(this).attr("idVenda");
-    window.location = "index.php?rota=editar-venda&idVenda=" + idVenda;
-})
+
 
 /*=============================================
 FUNÇÃO PARA DESATIVAR OS BOTÕES DE ADICIONAR
@@ -482,12 +488,15 @@ $('.tabelaVendas').on('draw.dt', function () {
 
 
 
-
+$(".tabelas").on("click", ".btnEditarVenda", function () {
+    let idVenda = $(this).attr("idVenda");
+    window.location = "index.php?rota=editar-venda&idVenda=" + idVenda;
+})
 
 /*=============================================
 EXCLUIR VENDA
 =============================================*/
-$(".btnExcluirVenda").click(function () {
+$(".tabelas").on("click", ".btnExcluirVenda", function () {
     let idVenda = $(this).attr("idVenda");
 
     Swal.fire({
@@ -516,4 +525,108 @@ $(".tabelas").on("click", "button.btnImprimirFatura", function () {
     let codigoVenda = $(this).attr("codigoVenda")
 
     window.open("extensions/tcpdf/pdf/fatura.php?codigo=" + codigoVenda, "_blank")
+})
+
+/*=============================================
+FILTRAR POR PERÍODO
+=============================================*/
+$("#daterange-btn").daterangepicker(
+    {
+        locale: {
+            format: "DD/MM/YYYY",
+            daysOfWeek: [
+                "Dom",
+                "Seg",
+                "Ter",
+                "Qua",
+                "Qui",
+                "Sex",
+                "Sab",
+            ],
+            monthNames: [
+                "Jan",
+                "Fev",
+                "Mar",
+                "Abr",
+                "Mai",
+                "Jun",
+                "Jul",
+                "Ago",
+                "Out",
+                "Set",
+                "Nov",
+                "Dez",
+            ]
+        },
+        ranges: {
+            'Hoje': [moment(), moment()],
+            'Ontem': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+            'Últimos 7 dias': [moment().subtract(6, "days"), moment()],
+            'Últimos 30 dias': [moment().subtract(29, "days"), moment()],
+            'Mês Atual': [moment().startOf("month"), moment().endOf("month")],
+            'Mês anterior': [moment().subtract(1, "month").startOf("month"), moment().subtract(1, "month").endOf("month")],
+        },
+        startDate: moment(),
+        endDate: moment()
+    },
+    function (start, end) {
+        $("#daterange-btn span").html(start.format("DD/MM/YYYY") + ' - ' + end.format("DD/MM/YYYY"))
+
+        let dataInicial = start.format('YYYY-MM-DD')
+
+        let dataFinal = end.format('YYYY-MM-DD')
+
+        let capturarPeriodo = $("#daterange-btn span").html();
+
+        localStorage.setItem("capturarPeriodo", capturarPeriodo);
+
+        window.location = "index.php?rota=vendas&dataInicial=" + dataInicial + "&dataFinal=" + dataFinal;
+
+    }
+)
+
+/*=============================================
+FILTRAR POR PERÍODO
+=============================================*/
+$(".daterangepicker.opensleft .range_inputs .cancelBtn").on("click", function () {
+    localStorage.removeItem("capturarPeriodo");
+    localStorage.clear();
+    window.location = "vendas";
+})
+
+/*=============================================
+CAPTURAR HOJE
+=============================================*/
+$(".daterangepicker.opensleft .ranges li").on("click", function () {
+    let dataInicial = ""
+    let dataFinal = ""
+    let textoHoje = ($(this).attr("data-range-key"))
+
+    if (textoHoje == "Hoje") {
+        let dataAtual = new Date();
+        let dia = dataAtual.getDate();
+        let mes = dataAtual.getMonth() + 1;
+        let ano = dataAtual.getFullYear();
+
+        if (mes < 10 && dia < 10) {
+            dataInicial = ano + "-0" + mes + "-0" + dia
+            dataFinal = ano + "-0" + mes + "-0" + dia
+        }
+        else if (mes < 10) {
+            dataInicial = ano + "-0" + mes + "-" + dia
+            dataFinal = ano + "-0" + mes + "-" + dia
+
+        } else if (dia < 10) {
+            dataInicial = ano + "-" + mes + "-0" + dia
+            dataFinal = ano + "-" + mes + "-0" + dia
+
+        } else {
+            dataInicial = ano + "-" + mes + "-" + dia
+            dataFinal = ano + "-" + mes + "-" + dia
+        }
+
+
+        localStorage.setItem("capturarPeriodo", "Hoje")
+        window.location = "index.php?rota=vendas&dataInicial=" + dataInicial + "&dataFinal=" + dataFinal;
+    }
 })

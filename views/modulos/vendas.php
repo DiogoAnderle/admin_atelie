@@ -22,6 +22,13 @@
           </button>
         </a>
 
+        <button type="button" class="btn btn-default pull-right" id="daterange-btn">
+          <span>
+            <i class="fa fa-calendar"></i> Filtrar por período
+          </span>
+          <i class="fa fa-caret-down"></i>
+        </button>
+
         <div class="box-body">
           <table class="table table-bordered table-hover tabelas table-responsive">
             <thead>
@@ -37,10 +44,17 @@
             </thead>
             <tbody>
               <?php
-              $item = null;
-              $valor = null;
-              $vendas = ControllerVendas::ctrMostrarVendas($item, $valor);
-              foreach ($vendas as $key => $venda) {
+              if (isset($_GET["dataInicial"])) {
+                $dataInicial = $_GET["dataInicial"];
+                $dataFinal = $_GET["dataFinal"];
+              } else {
+                $dataInicial = null;
+                $dataFinal = null;
+              }
+
+              $vendas = ControllerVendas::ctrPeriodoDatasVendas($dataInicial, $dataFinal);
+
+              foreach (@$vendas as $key => $venda) {
                 echo '
                 <tr>
                   <td style="width: 10px;">' . $venda["id"] . '</td>

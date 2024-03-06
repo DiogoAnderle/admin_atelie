@@ -114,5 +114,51 @@ class ModeloVendas
         $stmt->null;
 
     }
+
+    public static function mdlPeriodoDatasVendas($tabela, $dataInicial, $dataFinal)
+    {
+
+        if ($dataInicial == null) {
+
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela ORDER BY id ASC");
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+
+        } else if ($dataInicial == $dataFinal) {
+
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE data_venda LIKE '%$dataFinal%'");
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        } else {
+            $dataAtual = new DateTime();
+            $dataAtual->add(new DateInterval("P1D"));
+            $dataAtualMaisUm = $dataAtual->format("Y-m-d");
+
+            $dataFinal2 = new DateTime($dataFinal);
+            $dataFinal2->add(new DateInterval("P1D"));
+            $dataFinalMaisUm = $dataFinal2->format("Y-m-d");
+
+            if ($dataFinalMaisUm == $dataAtualMaisUm) {
+                $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE data_venda  BETWEEN '$dataInicial' AND '$dataFinalMaisUm'");
+
+            } else {
+                $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE data_venda  BETWEEN '$dataInicial' AND '$dataFinal'");
+            }
+
+            $stmt->execute();
+
+            return $stmt->fetchAll();
+
+        }
+        $stmt->close();
+
+        $stmt->null;
+    }
 }
 

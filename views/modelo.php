@@ -25,6 +25,9 @@ session_start();
   <!-- Ionicons -->
   <link rel="stylesheet" href="views/bower_components/Ionicons/css/ionicons.min.css">
 
+  <!-- DateRange Picker -->
+  <link rel="stylesheet" href="views/bower_components/bootstrap-daterangepicker/daterangepicker.css">
+
   <!-- Theme style -->
   <link rel="stylesheet" href="views/dist/css/AdminLTE.css">
 
@@ -42,6 +45,9 @@ session_start();
     href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
   <link rel="icon" href="views\bower_components\Ionicons\png\512\xbox.png">
+
+  <!-- Morris css https://morrisjs.github.io/morris.js/ -->
+  <script src="views/bower_components/morris.js/morris.css"></script>
 
   <!--===========================
       JAVASCRIPT PLUGINS
@@ -77,6 +83,16 @@ session_start();
   <script src="views/plugins/input-mask/jquery.inputmask.js"></script>
   <script src="views/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
   <script src="views/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+
+
+  <!-- daterangepicker http://www.daterangepicker.com/ -->
+  <script src="views/bower_components/moment/min/moment.min.js"></script>
+  <script src="views/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+
+  <!-- Morris.js Charts https://morrisjs.github.io/morris.js/ -->
+  <script src="views/bower_components/raphael/raphael.min.js"></script>
+  <script src="views/bower_components/morris.js/morris.min.js"></script>
+
 
 
 </head>
@@ -148,6 +164,7 @@ session_start();
   <script src="views/js/produtos.js"></script>
   <script src="views/js/clientes.js"></script>
   <script src="views/js/vendas.js"></script>
+  <script src="views/js/relatorios.js"></script>
 </body>
 
 </html>

@@ -420,4 +420,17 @@ class ControllerVendas
 
         return $resposta;
     }
+
+    /***********************************************
+     * VENDAS POR PERÍODO
+     ***********************************************/
+
+
+    static public function ctrPeriodoDatasVendas($dataInicial, $dataFinal)
+    {
+        $tabela = "vendas";
+
+        $resposta = ModeloVendas::mdlPeriodoDatasVendas($tabela, $dataInicial, $dataFinal);
+        return $resposta;
+    }
 }
