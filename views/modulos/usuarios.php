@@ -1,3 +1,11 @@
+<?php
+if ($_SESSION["perfil"] != "Administrador") {
+  echo "<script>
+          window.location = 'inicio';
+      </script>";
+}
+?>
+
 <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
