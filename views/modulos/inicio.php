@@ -32,7 +32,7 @@
         ?>
 
       </div>
-      <div class="col-lg-6">
+      <div class="col-lg-7">
         <?php
         if ($_SESSION["perfil"] == "Administrador") {
           include "relatorios/produtos-mais-vendidos.php";
@@ -41,7 +41,7 @@
 
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-5">
         <?php
         if ($_SESSION["perfil"] == "Administrador") {
           include "inicio/produtos-adicionados-recentemente.php";
