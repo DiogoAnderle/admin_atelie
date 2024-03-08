@@ -15,19 +15,55 @@
   <section class="content">
     <div class="row">
       <?php
-      include "inicio/labels-superiores.php"
 
-        ?>
+      if ($_SESSION["perfil"] == "Administrador") {
+        include "inicio/labels-superiores.php";
+      }
+
+      ?>
     </div>
 
     <div class="row">
       <div class="col-lg-12">
         <?php
-        include "inicio/grafico-vendas.php"
-
-          ?>
+        if ($_SESSION["perfil"] == "Administrador") {
+          include "relatorios/grafico-vendas.php";
+        }
+        ?>
 
       </div>
+      <div class="col-lg-6">
+        <?php
+        if ($_SESSION["perfil"] == "Administrador") {
+          include "relatorios/produtos-mais-vendidos.php";
+        }
+        ?>
+
+      </div>
+
+      <div class="col-lg-6">
+        <?php
+        if ($_SESSION["perfil"] == "Administrador") {
+          include "inicio/produtos-adicionados-recentemente.php";
+        }
+        ?>
+
+      </div>
+      <div class="col-lg-12">
+        <?php
+        if ($_SESSION["perfil"] == "Vendedor" || $_SESSION["perfil"] == "Especial") {
+          echo
+            "<div class='box box-success'>
+            <div class='box-header'>
+              <h1>Bem vindo, " . $_SESSION["nome"] . ".</>
+            </div>
+          </div>
+          ";
+        }
+        ?>
+      </div>
+
+
     </div>
 
 

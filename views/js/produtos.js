@@ -8,9 +8,12 @@
   }
 })*/
 
+const perfilOculto = $('#perfilOculto').val();
+
+
 var table = $('.tabelaProdutos').DataTable({
 
-  "ajax": "ajax/datatable-produtos.ajax.php",
+  "ajax": "ajax/datatable-produtos.ajax.php?perfil=" + perfilOculto,
   "deferRender": true,
   "retrieve": true,
   "processing": true,

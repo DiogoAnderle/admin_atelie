@@ -69,15 +69,17 @@
                 echo '<td>' . date('d/m/Y', strtotime($cliente["data_cadastro"])) . '</td>
                 <td> <div class="btn-group">
                             <button class="btn btn-warning btnEditarCliente" id="btnEditarCliente" idCliente="' . $cliente["id"] . '" data-toggle="modal" data-target="#modalEditarCliente" title="Editar"><i
-                                class="fa fa-pencil"></i></button>
-
+                                class="fa fa-pencil"></i></button>';
+                if ($_SESSION["perfil"] == "Administrador") {
+                  echo '
                             <button class="btn btn-danger btnExcluirCliente" 
                                     idCliente = "' . $cliente["id"] . '" 
                                     nomeCliente = "' . $cliente["nome"] . '" 
                                     title="Excluir">
                                     
-                                    <i class="fa fa-times"></i></button>
-                          </div></td>
+                                    <i class="fa fa-times"></i></button>';
+                }
+                echo ' </div></td>
               </tr>';
               }
 

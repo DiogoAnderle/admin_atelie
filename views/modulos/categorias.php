@@ -43,15 +43,18 @@
                         <td>
                           <div class="btn-group">
                             <button class="btn btn-warning btnEditarCategoria" idCategoria="' . $categoria["id"] . '" data-toggle="modal" data-target="#modalEditarCategoria" title="Editar"><i
-                                class="fa fa-pencil"></i></button>
+                                class="fa fa-pencil"></i></button>';
+                if ($_SESSION["perfil"] == "Administrador") {
+                  echo '
 
                             <button class="btn btn-danger btnExcluirCategoria" 
                                     idCategoria = "' . $categoria["id"] . '" 
                                     nomeCategoria = "' . $categoria["categoria"] . '" 
                                     title="Excluir">
                                     
-                                    <i class="fa fa-times"></i></button>
-                          </div>
+                                    <i class="fa fa-times"></i></button>';
+                }
+                echo '</div>
                         </td>
                       </tr>';
               }

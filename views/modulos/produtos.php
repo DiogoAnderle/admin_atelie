@@ -50,9 +50,8 @@
                 <th>Ações</th>
               </tr>
             </tfoot>
-
-
           </table>
+          <input type="hidden" value="<?php echo $_SESSION['perfil'] ?>" id="perfilOculto">
         </div>
 
       </div>

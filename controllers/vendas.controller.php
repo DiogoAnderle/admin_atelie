@@ -414,6 +414,10 @@ class ControllerVendas
         }
     }
 
+    /***********************************************
+     * SOMAR TOTAL DE VENDAS
+     ***********************************************/
+
     public static function ctrSomaTotaldeVendas()
     {
         $tabela = 'vendas';
@@ -426,13 +430,112 @@ class ControllerVendas
     /***********************************************
      * VENDAS POR PERÍODO
      ***********************************************/
-
-
     static public function ctrPeriodoDatasVendas($dataInicial, $dataFinal)
     {
         $tabela = "vendas";
 
         $resposta = ModeloVendas::mdlPeriodoDatasVendas($tabela, $dataInicial, $dataFinal);
         return $resposta;
+    }
+
+    /***********************************************
+     * BAIXAR RELATORIO EM EXCEL
+     ***********************************************/
+    public function ctrBaixarRelatorio()
+    {
+        if (isset($_GET["relatorio"])) {
+
+            $tabela = "vendas";
+
+            if (isset($_GET["dataInicial"]) && isset($_GET["dataInicial"])) {
+                $vendas = ModeloVendas::mdlPeriodoDatasVendas($tabela, $_GET["dataInicial"], $_GET["dataFinal"]);
+
+
+            } else {
+                $item = null;
+                $valor = null;
+                $vendas = ModeloVendas::mdlMostrarVendas($tabela, $item, $valor);
+            }
+
+            /***********************************************
+             * Criar o arquivo em Excel
+             ***********************************************/
+
+            $Name = $_GET["relatorio"];
+
+            header('Expires:0');
+            header('Cache-Control: private');
+            header("Content-Type: application/vnd.ms-excel");
+            header('Cache-Control: cache, must-revalidate');
+            header('Content-Description: File Transfer');
+            header('Last-Modified:' . date('D, d M Y H:i:s'));
+            header('Pragma: Public');
+            header('Content-Disposition:; filename="' . $Name . '.xls"');
+            header('Content-Transfer-Encoding: binary');
+
+            echo mb_convert_encoding(
+                "<table border=1>
+                    <tr>
+                        <td style='font-weight:bold; border: 1px solid #000;'>CÓDIGO</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>CLIENTE</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>VENDEDOR</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>QUANTIDADE</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>PRODUTOS</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>SUBTOTAL</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>ACRESC/DESC</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>TOTAL</td>
+                        <td style='font-weight:bold; border: 1px solid #000;'>DATA</td>
+                    </tr>",
+                "ISO8859-1"
+            );
+
+
+            foreach ($vendas as $row => $item) {
+
+                $cliente = ControllerClientes::ctrMostrarClientes("id", $item["cliente_id"]);
+                $vendedor = ControllerUsuarios::crtMostrarUsuarios("id", $item["vendedor_id"]);
+
+                echo mb_convert_encoding(
+                    "<tr>
+                    <td style='font-weight:bold; border: 1px solid #000;'>" . $item["codigo"] . "</td>
+                    <td style='font-weight:bold; border: 1px solid #000;'>" . $cliente["nome"] . "</td>
+                    <td style='font-weight:bold; border: 1px solid #000;'>" . $vendedor["nome"] . "</td>
+                    <td style='font-weight:bold; border: 1px solid #000;'>",
+                    "ISO8859-1"
+                );
+
+                $produtos = json_decode($item["produtos"], true);
+
+                foreach ($produtos as $key => $valueProdutos) {
+                    echo mb_convert_encoding($valueProdutos["quantidade"] . "<br>", "ISO8859-1");
+                }
+
+                echo mb_convert_encoding("</td><td style='font-weight:bold; border: 1px solid #000;'>", "ISO8859-1");
+
+                foreach ($produtos as $key => $valueProdutos) {
+                    echo mb_convert_encoding($valueProdutos["descricao"] . "<br>", "ISO8859-1");
+                }
+                echo mb_convert_encoding("</td>
+                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["subtotal"], 2, ",", ".") . "</td>
+                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["acrescimo"], 2, ",", ".") . "</td>
+                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["total"], 2, ",", ".") . "</td>
+                <td style='font-weight:bold; border: 1px solid #000;'>" . substr($item["data_venda"], 0, 10) . "</td>
+                </tr>", "ISO8859-1");
+            }
+
+            $totalVendas = ControllerVendas::ctrSomaTotaldeVendas();
+
+            echo "<tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style='font-weight:bold; border: 1px solid #000;'>Total Vendas</td>
+                    <td></td>
+                    <td></td>
+                    <td style='font-weight:bold; border: 1px solid #000;'>" . number_format($totalVendas["total"], 2, ",", ".") . "</td>
+            </tr>";
+            echo "</table>";
+        }
     }
 }

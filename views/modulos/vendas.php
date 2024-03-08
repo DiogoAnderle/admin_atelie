@@ -54,7 +54,7 @@
 
               $vendas = ControllerVendas::ctrPeriodoDatasVendas($dataInicial, $dataFinal);
 
-              foreach (@$vendas as $key => $venda) {
+              foreach ($vendas as $key => $venda) {
                 echo '
                 <tr>
                   <td style="width: 10px;">' . $venda["id"] . '</td>
@@ -75,7 +75,9 @@
                     <div class="btn-group">
                       <button class="btn btn-primary btnImprimirFatura" codigoVenda ="' . $venda["codigo"] . '" title="Imprimir">
                         <i class="fa fa-print"></i>
-                      </button>
+                      </button>';
+                if ($_SESSION["perfil"] == "Administrador") {
+                  echo '
 
                         <button class="btn btn-warning btnEditarVenda" 
                                 idVenda ="' . $venda["id"] . '"
@@ -85,50 +87,13 @@
                       <button class="btn btn-danger btnExcluirVenda" 
                               idVenda ="' . $venda["id"] . '"
                               title="Excluir"><i class="fa fa-times"></i>
-                      </button>
-                    </div>
+                      </button>';
+                }
+                echo ' </div>
                   </td>
                 </tr>';
               }
               ?>
-
-            </tbody>
-            <!--
-              <?php
-
-
-              $item = null;
-              $valor = null;
-
-              $clientes = ControllerClientes::ctrMostrarClientes($item, $valor);
-
-              foreach ($clientes as $cliente) {
-                echo ' <tr>
-                <td>' . $cliente["id"] . '</td>
-                <td>' . $cliente["nome"] . '</td>
-                <td>' . $cliente["telefone"] . '</td>
-                <td>' . $cliente["email"] . '</td>
-                <td>' . $cliente["profissao"] . '</td>
-                <td>' . date('d/m/Y', strtotime($cliente["data_nascimento"])) . '</td>
-                <td>' . $cliente["compras"] . '</td>
-                <td>23/11/2023 09:40:22</td>
-                <td>' . date('d/m/Y H:i:s', strtotime($cliente["data_cadastro"])) . '</td>
-                <td> <div class="btn-group">
-                            <button class="btn btn-warning btnEditarCliente" id="btnEditarCliente" idCliente="' . $cliente["id"] . '" data-toggle="modal" data-target="#modalEditarCliente" title="Editar"><i
-                                class="fa fa-pencil"></i></button>
-
-                            <button class="btn btn-danger btnExcluirCliente" 
-                                    idCliente = "' . $cliente["id"] . '" 
-                                    nomeCliente = "' . $cliente["nome"] . '" 
-                                    title="Excluir">
-                                    
-                                    <i class="fa fa-times"></i></button>
-                          </div></td>
-              </tr>';
-              }
-
-              ?>
--->
             </tbody>
           </table>
 

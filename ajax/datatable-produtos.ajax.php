@@ -54,11 +54,18 @@ class TabelaProdutos
             /***************************************
                 Trazemos as ações
            ***************************************/
-            $botoes = "<div class='btn-group'><button class='btn btn-warning btnEditarProduto' idProduto='" . $produtos[$i]["id"] . "' data-toggle='modal' data-target='#modalEditarProduto' title='Editar'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnExcluirProduto' idProduto='" . $produtos[$i]["id"] . "' codigo='" . $produtos[$i]["codigo"] . "' imagem='" . $produtos[$i]["imagem"] . "' descricao='" . $produtos[$i]["descricao"] . "' title='Excluir'><i class='fa fa-times'></i></button></div>";
+
+            if (isset($_GET["perfil"]) && $_GET["perfil"] == "Especial") {
+                $botoes = "<div class='btn-group'><button class='btn btn-warning btnEditarProduto' idProduto='" . $produtos[$i]["id"] . "' data-toggle='modal' data-target='#modalEditarProduto' title='Editar'><i class='fa fa-pencil'></i></button></div>";
+
+            } else {
+
+                $botoes = "<div class='btn-group'><button class='btn btn-warning btnEditarProduto' idProduto='" . $produtos[$i]["id"] . "' data-toggle='modal' data-target='#modalEditarProduto' title='Editar'><i class='fa fa-pencil'></i></button><button class='btn btn-danger btnExcluirProduto' idProduto='" . $produtos[$i]["id"] . "' codigo='" . $produtos[$i]["codigo"] . "' imagem='" . $produtos[$i]["imagem"] . "' descricao='" . $produtos[$i]["descricao"] . "' title='Excluir'><i class='fa fa-times'></i></button></div>";
+            }
 
             /***************************************
-                Montamos o json de retorno
-           ***************************************/
+            Montamos o json de retorno
+       ***************************************/
 
             $dadosJson .= '[
                     "' . ($i + 1) . '",
