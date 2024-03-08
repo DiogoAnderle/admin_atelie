@@ -156,8 +156,9 @@ class ControllerVendas
                     $tabelaProdutos = "produtos";
                     $item = "id";
                     $idProduto = $value["id"];
+                    $ordem = "id";
 
-                    $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $idProduto);
+                    $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $idProduto, $ordem);
 
                     //Reverter a quantidade de itens vendidos antes  
                     // de salvar novamente no banco após a edição
@@ -208,8 +209,9 @@ class ControllerVendas
 
                     $item_2 = "id";
                     $idProduto = $value["id"];
+                    $ordem = "id";
 
-                    $trazerProduto_2 = ModelProdutos::mdlMostrarProdutos($tabelaProdutos_2, $item_2, $idProduto);
+                    $trazerProduto_2 = ModelProdutos::mdlMostrarProdutos($tabelaProdutos_2, $item_2, $idProduto, $ordem);
 
                     $item1a_2 = "vendas";
                     $valor1a_2 = $value["quantidade"] + $trazerProduto_2["vendas"];
@@ -353,8 +355,9 @@ class ControllerVendas
                 $tabelaProdutos = "produtos";
                 $item = "id";
                 $idProduto = $value["id"];
+                $ordem = "id";
 
-                $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $idProduto);
+                $trazerProduto = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $idProduto, $ordem);
 
                 //Reverter a quantidade de itens vendidos antes  
                 // de salvar novamente no banco após a edição

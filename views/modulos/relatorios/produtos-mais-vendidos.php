@@ -11,7 +11,7 @@ $totalVendas = ControllerProdutos::crtMostrarSomaVendas();
 
 ?>
 
-<div class="box box-default">
+<div class="box box-success">
     <div class="box-header with-border">
         <h3 class="box-title">Produtos Mais Vendidos</h3>
     </div>

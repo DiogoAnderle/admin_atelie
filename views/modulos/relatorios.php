@@ -63,12 +63,6 @@ if ($_SESSION["perfil"] != "Administrador") {
               ?>
           </div>
 
-          <div class="col-md-12 col-xs-12">
-            <?php
-            include "relatorios/produtos-mais-vendidos.php"
-              ?>
-          </div>
-
           <div class="col-md-6 col-xs-12">
             <?php
             include "relatorios/vendedores.php"
@@ -78,6 +72,16 @@ if ($_SESSION["perfil"] != "Administrador") {
           <div class="col-md-6 col-xs-12">
             <?php
             include "relatorios/clientes.php"
+              ?>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <?php
+            include "relatorios/produtos-mais-vendidos.php"
+              ?>
+          </div>
+          <div class="col-md-6 col-xs-12">
+            <?php
+            include "inicio/produtos-adicionados-recentemente.php"
               ?>
           </div>
 
