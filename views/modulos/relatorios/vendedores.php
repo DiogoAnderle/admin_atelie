@@ -44,7 +44,7 @@ $naoRepetirVendedores = array_unique($arrayVendedores);
             <?php
             foreach ($naoRepetirVendedores as $key => $value) {
                 echo "
-                { y: '" . $value . "', a: " . $somarTotalVendedores[$value] . " }";
+                { y: '" . $value . "', a: " . $somarTotalVendedores[$value] . " },";
             }
             ?>
 

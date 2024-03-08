@@ -109,7 +109,6 @@ class ControllerVendas
                 </script>";
             }
         }
-
     }
 
 
@@ -497,10 +496,10 @@ class ControllerVendas
 
                 echo mb_convert_encoding(
                     "<tr>
-                    <td style='font-weight:bold; border: 1px solid #000;'>" . $item["codigo"] . "</td>
-                    <td style='font-weight:bold; border: 1px solid #000;'>" . $cliente["nome"] . "</td>
-                    <td style='font-weight:bold; border: 1px solid #000;'>" . $vendedor["nome"] . "</td>
-                    <td style='font-weight:bold; border: 1px solid #000;'>",
+                    <td style='border: 1px solid #000;'>" . $item["codigo"] . "</td>
+                    <td style='border: 1px solid #000;'>" . $cliente["nome"] . "</td>
+                    <td style='border: 1px solid #000;'>" . $vendedor["nome"] . "</td>
+                    <td style='border: 1px solid #000;'>",
                     "ISO8859-1"
                 );
 
@@ -510,16 +509,16 @@ class ControllerVendas
                     echo mb_convert_encoding($valueProdutos["quantidade"] . "<br>", "ISO8859-1");
                 }
 
-                echo mb_convert_encoding("</td><td style='font-weight:bold; border: 1px solid #000;'>", "ISO8859-1");
+                echo mb_convert_encoding("</td><td style='border: 1px solid #000;'>", "ISO8859-1");
 
                 foreach ($produtos as $key => $valueProdutos) {
                     echo mb_convert_encoding($valueProdutos["descricao"] . "<br>", "ISO8859-1");
                 }
                 echo mb_convert_encoding("</td>
-                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["subtotal"], 2, ",", ".") . "</td>
-                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["acrescimo"], 2, ",", ".") . "</td>
-                <td style='font-weight:bold; border: 1px solid #000;'>R$ " . number_format($item["total"], 2, ",", ".") . "</td>
-                <td style='font-weight:bold; border: 1px solid #000;'>" . substr($item["data_venda"], 0, 10) . "</td>
+                <td style='border: 1px solid #000;'>R$ " . number_format($item["subtotal"], 2, ",", ".") . "</td>
+                <td style='border: 1px solid #000;'>R$ " . number_format($item["acrescimo"], 2, ",", ".") . "</td>
+                <td style='border: 1px solid #000;'>R$ " . number_format($item["total"], 2, ",", ".") . "</td>
+                <td style='border: 1px solid #000;'>" . substr($item["data_venda"], 0, 10) . "</td>
                 </tr>", "ISO8859-1");
             }
 
