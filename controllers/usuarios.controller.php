@@ -72,12 +72,20 @@ class ControllerUsuarios
     ********************************* */
     public static function ctrCriarUsuario()
     {
+        $dadosTemp = @array(
+            "nome" => $_POST["nome"],
+            "usuario" => $_POST["usuario"],
+            "senha" => $_POST["senha"],
+            "perfil" => $_POST["perfil"],
+        );
+
         if (isset($_POST["usuario"])) {
 
             if (
                 $_POST['nome'] &&
                 preg_match('/^[a-zyA-ZY0-9]+$/', $_POST['usuario']) &&
-                preg_match('/^[a-zA-Z0-9]+$/', $_POST['senha'])
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST['senha']) &&
+                preg_match('/^[a-zA-Z0-9]+$/', $_POST['perfil'])
             ) {
 
                 /* *****************************
@@ -170,20 +178,55 @@ class ControllerUsuarios
                 }
 
             } else {
-                echo "<script>
+                echo "
+                    <script>
 
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Algo deu errado!',
-                        text: 'Usuário não pode ser vazio ou conter caracteres especiais.',
-                        confirmButtonText: 'Fechar',
+                        let nome = document.getElementById('nome');
+                        let usuario = document.getElementById('usuario');
+                        let senha = document.getElementById('senha');
+                        let perfil = document.getElementById('perfil');
+                        
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ops! Algo deu errado!',
+                            text: 'Campos Obrigatórios não informados.',
+                            confirmButtonText: 'Fechar',
 
-                    }).then((result) => {
-                        if(result.value){
-                            window.location = 'usuarios';}
-                    });
-                
+                        }).then((result) => {
+                            if(result.value){
+                                let btnCadastrarUsuario = document.getElementById('btnCadastrarUsuario');
+                                btnCadastrarUsuario.click();
+                                mensagem = '';
+                            }
+                        })
+
+                        senha.type = 'text'
+
+                        nome.value = " . "\"" . ($dadosTemp['nome']) . "\"" . "
+                        usuario.value = " . "\"" . ($dadosTemp['usuario']) . "\"" . "
+                        senha.value = " . "\"" . ($dadosTemp['senha']) . "\"" . "
+                        perfil.value = " . "\"" . ($dadosTemp['perfil']) . "\"" . "
+                        perfil.text = " . "\"" . ($dadosTemp['perfil']) . "\"" . "
+
+                        senha.type = 'password'
+
+                        if(nome.value == ''){
+                            nome.classList.toggle('vermelho')
+                        }
+                        if(usuario.value == ''){
+                            usuario.classList.toggle('vermelho')
+                        }
+                        if(senha.value == ''){
+                            senha.classList.toggle('vermelho')
+                        }
+                        if(perfil.value == ''){
+                            perfil.classList.toggle('vermelho')
+                            perfil.text = '-- Selecione um perfil --'
+                        }
+
                     </script>";
+                var_dump($dadosTemp['perfil']);
+
             }
         }
     }

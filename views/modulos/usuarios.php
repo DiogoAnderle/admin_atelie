@@ -24,7 +24,8 @@ if ($_SESSION["perfil"] != "Administrador") {
 
     <div class="box">
       <div class="box-header with-border">
-        <button class="btn btn-primary" data-toggle="modal" data-target="#modalCadastrarUsuario">
+        <button class="btn btn-primary" id="btnCadastrarUsuario" data-toggle="modal"
+          data-target="#modalCadastrarUsuario">
           Cadastrar Usuário
         </button>
 
@@ -137,31 +138,36 @@ MODAL CRIAR USUÁRIO
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                <span class="input-group-addon"><i class="fa fa-user" style="width:20px;"></i></span>
                 <input type="text" class="form-control input-lg" id="nome" name="nome" placeholder="Nome Completo">
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-key"></i></span>
-                <input type="text" class="form-control input-lg" name="usuario" id="usuario" placeholder="Usuario"
-                  required>
+                <span class="input-group-addon"><i class="fa fa-key" style="width:20px;"></i></span>
+                <input type="text" class="form-control input-lg" name="usuario" id="usuario" placeholder="Usuario">
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input type="password" class="form-control input-lg" name="senha" placeholder="Senha" required>
+                <span class="input-group-addon"><i class="fa fa-lock" style="width:20px;"></i> </span>
+                <span style="position:relative;">
+                  <input type="password" class="form-control input-lg" name="senha" id="senha" placeholder="Senha">
+
+                  <i style="position:absolute; margin:15px -35px; z-index:10; font-size:1.2em" class="fa fa-eye-slash"
+                    id="mostrarOcultarSenha"></i>
+                </span>
+
               </div>
             </div>
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-users"></i></span>
-                <select class="form-control input-lg" name="perfil" required>
-                  <option value="" id="perfil">--Selecione um perfil--</option>
+                <span class="input-group-addon"><i class="fa fa-users" style="width:20px;"></i></span>
+                <select class="form-control input-lg" name="perfil" id="perfil">
+                  <option value="">--Selecione um perfil--</option>
                   <option value="Administrador">Administrador</option>
                   <option value="Especial">Especial</option>
                   <option value="Vendedor">Vendedor</option>
@@ -282,7 +288,36 @@ MODAL EDITAR USUÁRIO
   </div>
 
 </div>
+
 <?php
 $excluirUsuario = new ControllerUsuarios();
 $excluirUsuario->ctrExcluirUsuario();
 ?>
+
+<script>
+
+  let mostrarSenha = document.getElementById("mostrarOcultarSenha");
+
+  function alterarTipo() {
+
+    let inputSenha = document.getElementById("senha")
+    if (inputSenha.type === "password") {
+      inputSenha.type = "text"
+      mostrarSenha.classList.toggle("fa-eye-slash")
+      mostrarSenha.classList.toggle("fa-eye")
+    } else if (inputSenha.type === "text") {
+      inputSenha.type = "password"
+      mostrarSenha.classList.toggle("fa-eye-slash")
+      mostrarSenha.classList.toggle("fa-eye")
+    }
+
+  }
+
+  mostrarSenha.onclick = () => {
+    alterarTipo()
+  }
+
+
+
+
+</script>

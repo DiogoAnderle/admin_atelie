@@ -106,26 +106,26 @@ session_start();
 
   <?php
 
-  if (isset($_SESSION["initSession"]) && $_SESSION["initSession"] == "ok") {
+  if (isset ($_SESSION["initSession"]) && $_SESSION["initSession"] == "ok") {
 
     echo "<div class='wrapper'>";
     /* =============================================== 
        Header
       =============================================== */
-    include("modulos/header.php");
+    include ("modulos/header.php");
 
     /* =============================================== 
      Menu
     =============================================== */
 
-    include("modulos/menu.php");
+    include ("modulos/menu.php");
 
 
     /* =============================================== */
     /* Conteúdo */
     /* =============================================== */
 
-    if (isset($_GET["rota"])) {
+    if (isset ($_GET["rota"])) {
       if (
         $_GET["rota"] == 'inicio' ||
         $_GET["rota"] == 'usuarios' ||
@@ -136,26 +136,27 @@ session_start();
         $_GET["rota"] == 'criar-venda' ||
         $_GET["rota"] == 'editar-venda' ||
         $_GET["rota"] == 'relatorios' ||
+        $_GET["rota"] == 'fornecedores' ||
         $_GET["rota"] == 'sair'
       ) {
 
-        include("modulos/" . $_GET["rota"] . ".php");
+        include ("modulos/" . $_GET["rota"] . ".php");
       } else {
-        include("modulos/404.php");
+        include ("modulos/404.php");
       }
     } else {
-      include("modulos/inicio.php");
+      include ("modulos/inicio.php");
     }
 
     /* =============================================== */
     /* Footer */
     /* =============================================== */
 
-    include("modulos/footer.php");
+    include ("modulos/footer.php");
 
     echo "</div>";
   } else {
-    include("modulos/login.php");
+    include ("modulos/login.php");
   }
   ?>
 

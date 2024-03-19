@@ -35,7 +35,14 @@
                     <i class="fa fa-product-hunt"></i>
                     <span>Produtos</span>
                   </a>
-                </li>';
+                </li>
+                <li class="">
+                  <a href="fornecedores">
+                    <i class="fa fa-th"></i>
+                    <span>Fornecedores</span>
+                  </a>
+                </li>
+                ';
       }
 
       if ($_SESSION["perfil"] == "Administrador" || $_SESSION["perfil"] == "Vendedor") {
