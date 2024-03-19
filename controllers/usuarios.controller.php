@@ -7,7 +7,11 @@ class ControllerUsuarios
     ********************************* */
     public static function ctrLoginUsuario()
     {
-        if (isset($_POST["usuario"])) {
+        $dadosTemp = @array(
+            "usuarioLogin" => $_POST["usuario"],
+            "senhaLogin" => $_POST["senha"],
+        );
+        if (isset ($_POST["usuario"])) {
             $hash_cripted = '$6$rounds=1000000$NJy4rIPjpOaU$0ACEYGg/aKCY3v8O8AfyiO7CTfZQ8/W231Qfh2tRLmfdvFD6XfHk12u6hMr9cYIA4hnpjLNSTRtUwYr9km9Ij/';
 
             $encriptar = crypt($_POST["senha"], $hash_cripted);
@@ -57,11 +61,34 @@ class ControllerUsuarios
                         }
 
                     } else {
-                        echo '<br><div class="alert alert-danger text-center m-3">Usuário inativo, entre em contato com o administrador do sistema</div>';
+                        "echo <br><div class='alert alert-danger text-center m-3'>Usuário inativo, entre em contato com o administrador do sistema</div>
+                        <script>
+                        let usuario = document.getElementById('usuario');
+                        let senha = document.getElementById('senha');
+                         senhaLogin.type = 'text'
+
+                        usuarioLogin.value = " . "\"" . ($dadosTemp['usuarioLogin']) . "\"" . "
+                        senhaLogin.value = " . "\"" . ($dadosTemp['senhaLogin']) . "\"" . "
+                        senhaLogin.type = 'password'
+                    </script>";
                     }
 
                 } else {
-                    echo '<br><div class="alert alert-danger text-center m-3">Login ou senha inválidos, tente novamente</div>';
+                    echo "<br>
+                    
+                    <div class='alert alert-danger text-center m-3'>
+                        Login ou senha inválidos, tente novamente
+                    </div>
+                    <script>
+                        let usuarioLogin = document.getElementById('usuarioLogin');
+                        let senhaLogin = document.getElementById('senhaLogin');
+                         senhaLogin.type = 'text'
+
+                        usuarioLogin.value = " . "\"" . ($dadosTemp['usuarioLogin']) . "\"" . "
+                        senhaLogin.value = " . "\"" . ($dadosTemp['senhaLogin']) . "\"" . "
+                        senhaLogin.type = 'password'
+                    </script>
+                    ";
                 }
             }
         }
@@ -79,7 +106,7 @@ class ControllerUsuarios
             "perfil" => $_POST["perfil"],
         );
 
-        if (isset($_POST["usuario"])) {
+        if (isset ($_POST["usuario"])) {
 
             if (
                 $_POST['nome'] &&
@@ -94,7 +121,7 @@ class ControllerUsuarios
                 $rota = 'views/img/usuarios/user-default.png';
 
 
-                if (isset($_FILES["novaImagem"]["tmp_name"]) && $_FILES["novaImagem"]["tmp_name"] != "") {
+                if (isset ($_FILES["novaImagem"]["tmp_name"]) && $_FILES["novaImagem"]["tmp_name"] != "") {
 
                     list($largura, $altura) = getimagesize($_FILES["novaImagem"]["tmp_name"]);
 
@@ -225,8 +252,6 @@ class ControllerUsuarios
                         }
 
                     </script>";
-                var_dump($dadosTemp['perfil']);
-
             }
         }
     }
@@ -249,7 +274,7 @@ class ControllerUsuarios
     ********************************* */
     public static function ctrEditarUsuario()
     {
-        if (isset($_POST["editarUsuario"])) {
+        if (isset ($_POST["editarUsuario"])) {
 
             if ($_POST['editarNome']) {
 
@@ -259,7 +284,7 @@ class ControllerUsuarios
                  **************************** */
                 $rota = $_POST['imagemAtual'];
 
-                if (isset($_FILES["editarImagem"]["tmp_name"]) && !empty($_FILES["editarImagem"]["tmp_name"])) {
+                if (isset ($_FILES["editarImagem"]["tmp_name"]) && !empty ($_FILES["editarImagem"]["tmp_name"])) {
 
 
                     list($largura, $altura) = getimagesize($_FILES["editarImagem"]["tmp_name"]);
@@ -277,7 +302,7 @@ class ControllerUsuarios
                     /* *****************************
                      * Verificar se já existe uma imagem na base de dados
                      **************************** */
-                    if (!empty($_POST['imagemAtual'])) {
+                    if (!empty ($_POST['imagemAtual'])) {
 
                         unlink($_POST['imagemAtual']);
 
@@ -408,7 +433,7 @@ class ControllerUsuarios
     public static function ctrExcluirUsuario()
     {
 
-        if (isset($_GET["idUsuario"])) {
+        if (isset ($_GET["idUsuario"])) {
             $tabela = 'usuarios';
             $dados = $_GET["idUsuario"];
 

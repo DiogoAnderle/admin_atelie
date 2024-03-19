@@ -131,12 +131,12 @@ session_start();
         $_GET["rota"] == 'usuarios' ||
         $_GET["rota"] == 'categorias' ||
         $_GET["rota"] == 'clientes' ||
+        $_GET["rota"] == 'fornecedores' ||
         $_GET["rota"] == 'produtos' ||
         $_GET["rota"] == 'vendas' ||
         $_GET["rota"] == 'criar-venda' ||
         $_GET["rota"] == 'editar-venda' ||
         $_GET["rota"] == 'relatorios' ||
-        $_GET["rota"] == 'fornecedores' ||
         $_GET["rota"] == 'sair'
       ) {
 
@@ -166,6 +166,7 @@ session_start();
   <script src="views/js/produtos.js"></script>
   <script src="views/js/clientes.js"></script>
   <script src="views/js/vendas.js"></script>
+  <script src="views/js/fornecedores.js"></script>
   <script src="views/js/relatorios.js"></script>
 </body>
 

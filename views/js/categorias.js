@@ -17,8 +17,6 @@ $(".btnEditarCategoria").click(function () {
     success: function (response) {
       $("#editarCategoria").val(response["categoria"]);
       $("#idCategoria").val(response["id"]);
-      console.log((response["categoria"]));
-      console.log(response["id"]);
     },
   });
 });

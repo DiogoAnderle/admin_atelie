@@ -39,7 +39,8 @@ class AjaxUsuarios
             Ativar Usuário
     ***************************************/
     public $validarUsuario;
-    public function ajaxValidarUsuario(){
+    public function ajaxValidarUsuario()
+    {
 
         $item = "usuario";
         $valor = $this->validarUsuario;
@@ -56,7 +57,7 @@ class AjaxUsuarios
 /***************************************
             Editar Usuário
 ***************************************/
-if (isset($_POST["idUsuario"])) {
+if (isset ($_POST["idUsuario"])) {
 
     $editarUsuario = new AjaxUsuarios();
     $editarUsuario->idUsuario = $_POST["idUsuario"];
@@ -67,7 +68,7 @@ if (isset($_POST["idUsuario"])) {
 /***************************************
             Ativar Usuário
 ***************************************/
-if (isset($_POST["ativarUsuario"])) {
+if (isset ($_POST["ativarUsuario"])) {
 
     $ativarUsuario = new AjaxUsuarios();
     $ativarUsuario->ativarUsuario = $_POST["ativarUsuario"];
@@ -79,7 +80,7 @@ if (isset($_POST["ativarUsuario"])) {
 /***************************************
             Validar Usuário
 ***************************************/
-if (isset($_POST["validarUsuario"])) {
+if (isset ($_POST["validarUsuario"])) {
 
     $valUsuario = new AjaxUsuarios();
     $valUsuario->validarUsuario = $_POST["validarUsuario"];

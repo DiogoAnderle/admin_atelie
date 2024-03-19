@@ -129,6 +129,7 @@ $(document).on("click", ".btnAtivar", function () {
 
 $("#usuario").change(function () {
   $(".alert").remove();
+  $("#usuario").removeClass('vermelho');
 
   let usuario = $(this).val();
 
@@ -150,6 +151,8 @@ $("#usuario").change(function () {
             '<div class="alert alert-warning">Este usuário já existe na base de dados.</div>'
           );
         $("#usuario").val("");
+        $("#usuario").focus();
+        $("#usuario").addClass('vermelho');
       }
     },
   });

@@ -10,7 +10,7 @@ class ControllerCategorias
     public static function ctrCriarCategoria()
     {
 
-        if (isset($_POST["novaCategoria"])) {
+        if (isset ($_POST["novaCategoria"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇãõÃÕ ]+$/', $_POST["novaCategoria"])) {
 
                 $tabela = "categorias";
@@ -73,7 +73,7 @@ class ControllerCategorias
     public static function ctrEditarCategoria()
     {
 
-        if (isset($_POST["editarCategoria"])) {
+        if (isset ($_POST["editarCategoria"])) {
             if (preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇãõÃÕ ]+$/', $_POST["editarCategoria"])) {
 
                 $tabela = "categorias";
@@ -124,8 +124,8 @@ class ControllerCategorias
 
     public static function ctrExcluirCategorias()
     {
-        if (isset($_GET["idCategoria"])) {
-            
+        if (isset ($_GET["idCategoria"])) {
+
             $tabela = "categorias";
             $dados = $_GET["idCategoria"];
 
