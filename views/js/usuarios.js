@@ -144,6 +144,7 @@ $("#usuario").change(function () {
     processData: false,
     dataType: "json",
     success: function (resposta) {
+      console.log(resposta)
       if (resposta) {
         $("#usuario")
           .parent()

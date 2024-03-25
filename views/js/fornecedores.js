@@ -48,12 +48,13 @@ $(".btnExcluirFornecedor").click(function () {
 
 
 /******************************
- * Verificar se  usuário já existe
+ * Verificar se  fornecedor já existe
  ******************************/
 
 $("#novoFornecedor").change(function () {
   $(".alert").remove();
   $("#novoFornecedor").removeClass('vermelho');
+
   let novoFornecedor = $(this).val();
 
   var dados = new FormData();

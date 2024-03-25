@@ -261,7 +261,6 @@ class ControllerUsuarios
     ********************************* */
     public static function crtMostrarUsuarios($item, $valor)
     {
-
         $tabela = "usuarios";
 
         $resposta = ModeloUsuarios::mdlMostrarUsuarios($tabela, $item, $valor);

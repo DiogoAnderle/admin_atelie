@@ -38,7 +38,7 @@
                 </li>
                 <li class="">
                   <a href="fornecedores">
-                    <i class="fa fa-th"></i>
+                    <i class="fa fa-building"></i>
                     <span>Fornecedores</span>
                   </a>
                 </li>

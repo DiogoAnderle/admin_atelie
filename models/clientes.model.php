@@ -40,7 +40,7 @@ class ModeloClientes
 
             $stmt = Conexao::conectar()->prepare("SELECT * FROM  $tabela WHERE $item = :$item");
 
-            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_INT);
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
             $stmt->execute();
 

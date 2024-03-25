@@ -20,18 +20,43 @@ class AjaxClientes
         echo json_encode($resposta);
 
     }
+
+    /***************************************
+          Validar Cliente
+  ***************************************/
+    public $validarCliente;
+    public function ajaxValidarCliente()
+    {
+        $item = "nome";
+        $valor = $this->validarCliente;
+
+        $resposta = ControllerClientes::ctrMostrarClientes($item, $valor);
+
+        echo json_encode($resposta);
+    }
 }
 
 
 /***************************************
-               Editar Categoria
+               Editar Cliente
    ***************************************/
-if (isset($_POST["idCliente"])) {
+if (isset ($_POST["idCliente"])) {
 
     $cliente = new AjaxClientes();
     $cliente->idCliente = $_POST["idCliente"];
     $cliente->ajaxEditarCliente();
 
-} else {
-    echo 'não veio';
+}
+
+
+/***************************************
+            Validar Cliente
+***************************************/
+
+
+if (isset ($_POST["validarCliente"])) {
+
+    $valCliente = new AjaxClientes();
+    $valCliente->validarCliente = $_POST["validarCliente"];
+    $valCliente->ajaxValidarCliente();
 }

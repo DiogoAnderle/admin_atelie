@@ -51,3 +51,38 @@ $(".btnExcluirCliente").click(function () {
   });
 })
 
+/******************************
+ * Validar Cliente
+ ******************************/
+$("#novoCliente").change(function () {
+  $(".alert").remove();
+  $("#novoCliente").removeClass('vermelho');
+
+  var validarCliente = $(this).val();
+  console.log(validarCliente)
+  var dados = new FormData();
+  dados.append("validarCliente", validarCliente);
+  $.ajax({
+    url: "ajax/clientes.ajax.php",
+    method: "POST",
+    data: dados,
+    cache: false,
+    contentType: false,
+    processData: false,
+    dataType: "json",
+    success: function (resposta) {
+      console.log(resposta)
+      if (resposta) {
+        $("#novoCliente")
+          .parent()
+          .after(
+            '<div class="alert alert-warning m-2">Este cliente já existe na base de dados.</div>'
+          );
+        $("#novoCliente").val("");
+        $("#novoCliente").focus();
+        $("#novoCliente").addClass('vermelho');
+      }
+    },
+  });
+});
+

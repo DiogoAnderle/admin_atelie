@@ -129,22 +129,46 @@ class ControllerCategorias
             $tabela = "categorias";
             $dados = $_GET["idCategoria"];
 
+            $tabelaProdutos = "produtos";
+            $item = "categoria_id";
+            $ordem = "id";
 
-            $response = ModeloCategorias::mdlExcluirCategoria($tabela, $dados);
+            $consultaProdutosCategoria = ModelProdutos::mdlMostrarProdutos($tabelaProdutos, $item, $dados, $ordem);
 
-            if ($response == 'ok') {
+            if (!$consultaProdutosCategoria) {
+
+                $response = ModeloCategorias::mdlExcluirCategoria($tabela, $dados);
+
+                if ($response == 'ok') {
+                    echo
+                        "<script>
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Categoria deletada com sucesso',
+                            confirmButtonText: 'Fechar'
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = 'categorias';}
+                        });
+                    </script>";
+                }
+            } else {
                 echo
                     "<script>
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Categoria deletada com sucesso',
-                        confirmButtonText: 'Fechar'
-                    }).then(function(result){
-                        if(result.value){
-                            window.location = 'categorias';}
-                    });
-                </script>";
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Oops, algo deu errado!',
+                            text: 'Não é possível excluir uma categoria com produtos vinculados.',
+                            confirmButtonText: 'Fechar'
+                        }).then(function(result){
+                            if(result.value){
+                                window.location = 'categorias';}
+                        });
+                    </script>";
             }
+
+
+
 
         }
     }

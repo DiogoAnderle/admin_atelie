@@ -16,7 +16,7 @@ class ControllerClientes
             "data_nascimento" => $_POST["novaDataNascimento"],
         );
 
-        if (isset($_POST["novoCliente"])) {
+        if (isset ($_POST["novoCliente"])) {
             if (
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇãõÃÕ ]+$/', $_POST["novoCliente"]) &&
                 preg_match('/^[a-zA-Z0-9ñÑáéíóúÁÉÍÓÚçÇãõÃÕ ]+$/', $_POST["novaProfissao"])
@@ -99,7 +99,7 @@ class ControllerClientes
     ==================================*/
     public static function ctrMostrarClientes($item, $valor)
     {
-        $tabela = 'clientes';
+        $tabela = "clientes";
 
         $resposta = ModeloClientes::mdlMostrarClientes($tabela, $item, $valor);
 
@@ -111,7 +111,7 @@ class ControllerClientes
 ==================================*/
     public static function ctrEditarCliente()
     {
-        if (isset($_POST["editarCliente"])) {
+        if (isset ($_POST["editarCliente"])) {
             $dadosTemp = @array(
                 "nome" => $_POST["editarCliente"],
                 "telefone" => $_POST["editarTelefone"],
@@ -190,28 +190,55 @@ class ControllerClientes
     ==================================*/
     public static function ctrExcluirCliente()
     {
-        if (isset($_GET["idCliente"])) {
+        if (isset ($_GET["idCliente"])) {
 
             $tabela = "clientes";
             $dados = $_GET["idCliente"];
 
-            $resposta = ModeloClientes::mdlExcluirCliente($tabela, $dados);
+            $item = 'id';
+            $valor = $dados;
 
-            if ($resposta == 'ok') {
+            $consultarVendasCliente = ModeloClientes::mdlMostrarClientes($tabela, $item, $valor);
+
+            $consultarVendasCliente["compras"];
+
+            if ($consultarVendasCliente["compras"] == 0) {
+                $resposta = ModeloClientes::mdlExcluirCliente($tabela, $dados);
+
+                if ($resposta == 'ok') {
+                    echo "<script>
+
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Cliente excluído com sucesso',
+                            confirmButtonText: 'Fechar',
+
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'clientes';}
+                        });
+
+                        </script>";
+                }
+            } else {
                 echo "<script>
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Cliente excluído com sucesso',
-                        confirmButtonText: 'Fechar',
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Ooops, algo deu errado!',
+                            text: 'Não é possível excluir um cliente que já tenha efetuado uma compra.',
+                            confirmButtonText: 'Fechar',
 
-                    }).then((result) => {
-                        if(result.value){
-                            window.location = 'clientes';}
-                    });
-                
-                    </script>";
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'clientes';}
+                        });
+
+                        </script>";
             }
+
+
+
         }
     }
 

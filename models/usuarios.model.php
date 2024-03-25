@@ -1,7 +1,6 @@
 <?php
 
 require_once "conexao.php";
-
 class ModeloUsuarios
 {
     /*==================================
@@ -12,13 +11,13 @@ class ModeloUsuarios
 
         if ($item != null) {
 
-            @$stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item");
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE $item = :$item");
 
-            @$stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
+            $stmt->bindParam(":" . $item, $valor, PDO::PARAM_STR);
 
-            @$stmt->execute();
+            $stmt->execute();
 
-            return @$stmt->fetch();
+            return $stmt->fetch();
         } else {
             $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela");
 

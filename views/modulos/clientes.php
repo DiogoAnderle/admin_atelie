@@ -132,7 +132,7 @@ MODAL CADASTRAR CLIENTE
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
                 <input type="text" class="form-control input-lg" id="novoCliente" name="novoCliente"
-                  placeholder="Nome:">
+                  placeholder="Nome Completo:">
               </div>
             </div>
 
@@ -289,11 +289,3 @@ MODAL EDITAR CLIENTE
 $excluirCliente = new ControllerClientes();
 $excluirCliente->ctrExcluirCliente();
 ?>
-
-<script>
-  $(document).ready(function () {
-    //const idUsuario = document.querySelector("[idCliente='7']").click()
-
-  })
-
-</script>
