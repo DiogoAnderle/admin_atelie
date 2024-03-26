@@ -160,5 +160,16 @@ class ModeloVendas
 
         $stmt->null;
     }
-}
 
+    public static function mdlVerificaSeProdutoVendido($tabela, $item, $dados){
+
+        if ($item != null) {
+
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE JSON_CONTAINS($item, '{\"id\": \"$dados\"}','$')");
+            $stmt->execute();
+
+            return $stmt->fetch();
+        }
+
+    }
+}
