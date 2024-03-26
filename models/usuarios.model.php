@@ -26,9 +26,6 @@ class ModeloUsuarios
             return $stmt->fetchAll();
         }
 
-        $stmt->close();
-
-        $stmt->null();
     }
     /* ********************************* 
            Cadastrar Usuário
@@ -54,9 +51,6 @@ class ModeloUsuarios
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
     }
 
     /* ********************************* 
@@ -83,9 +77,6 @@ class ModeloUsuarios
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
     }
 
     /* ********************************* 
@@ -106,9 +97,6 @@ class ModeloUsuarios
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
 
     }
 
@@ -130,9 +118,6 @@ class ModeloUsuarios
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
 
     }
 

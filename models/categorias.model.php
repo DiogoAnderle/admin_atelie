@@ -20,9 +20,7 @@ class ModeloCategorias
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
+        
     }
 
     /*==================================
@@ -48,10 +46,6 @@ class ModeloCategorias
 
             return $stmt->fetchAll();
         }
-
-        $stmt->close();
-
-        $stmt = null;
 
     }
 
@@ -80,10 +74,6 @@ class ModeloCategorias
 
         }
 
-        $stmt->close();
-
-        $stmt = null;
-
     }
 
     public static function mdlExcluirCategoria($tabela, $dados)
@@ -100,20 +90,7 @@ class ModeloCategorias
 
         }
 
-        $stmt->close();
-
-        $stmt = null;
-
 
     }
-
-
-
-
-
-
-
-
-
 
 }

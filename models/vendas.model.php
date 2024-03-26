@@ -26,9 +26,6 @@ class ModeloVendas
             return $stmt->fetchAll();
         }
 
-        $stmt->close();
-
-        $stmt->null();
     }
     /***********************************************
      * CRIAR VENDA
@@ -45,14 +42,14 @@ class ModeloVendas
         $stmt->bindParam(":total", $dados["total"], PDO::PARAM_STR);
 
         if ($stmt->execute()) {
+   
             return "ok";
         } else {
+   
             return "error";
+    
         }
-        $stmt->close();
-
-        $stmt->null();
-
+     
     }
     /***********************************************
      * EDITAR VENDA
@@ -74,9 +71,6 @@ class ModeloVendas
         } else {
             return "error";
         }
-        $stmt->close();
-
-        $stmt->null();
 
     }
 
@@ -95,9 +89,6 @@ class ModeloVendas
         } else {
             return "error";
         }
-        $stmt->close();
-
-        $stmt->null();
 
     }
 
@@ -109,9 +100,6 @@ class ModeloVendas
 
         return $stmt->fetch();
 
-        $stmt->close();
-
-        $stmt->null;
 
     }
 
@@ -156,9 +144,18 @@ class ModeloVendas
             return $stmt->fetchAll();
 
         }
-        $stmt->close();
 
-        $stmt->null;
+    }
+
+    public static function mdlVerificaSeProdutoVendido($tabela, $item, $dados){
+
+        if ($item != null) {
+
+            $stmt = Conexao::conectar()->prepare("SELECT * FROM $tabela WHERE JSON_CONTAINS($item, '{\"id\": \"$dados\"}','$')");
+            $stmt->execute();
+
+            return $stmt->fetch();
+        }
+
     }
 }
-

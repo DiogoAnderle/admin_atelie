@@ -26,8 +26,7 @@ class ModelProdutos
 
 
         }
-        $stmt->close();
-        $stmt = null;
+
 
     }
 
@@ -57,11 +56,6 @@ class ModelProdutos
         } else {
             return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
-
     }
 
     /*==============================================
@@ -90,9 +84,6 @@ class ModelProdutos
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
     }
     /* ********************************* 
             Atualizar Produto
@@ -112,9 +103,6 @@ class ModelProdutos
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
 
     }
 
@@ -133,9 +121,6 @@ class ModelProdutos
             return "error";
         }
 
-        $stmt->close();
-
-        $stmt->null();
 
     }
 
@@ -145,9 +130,5 @@ class ModelProdutos
         $stmt->execute();
 
         return $stmt->fetch();
-
-        $stmt->close();
-
-        $stmt->null();
     }
 }

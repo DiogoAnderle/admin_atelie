@@ -281,29 +281,50 @@ class ControllerProdutos
             $tabela = 'produtos';
             $dados = $_GET["idProduto"];
 
-            if ($_GET["imagem"] != "" && $_GET["imagem"] != "views/img/produtos/product-default.png") {
-                unlink($_GET["imagem"]);
-                rmdir('views/img/produtos/' . $_GET["codigo"]);
-            }
+            // Verificar se produto já foi vendido caso Sim não permitir exclusão
+            $tabelaVendas = "vendas";
+            $produtosVendas = "produtos";
+            $verificaSeProdutoVendido = ModeloVendas::mdlVerificaSeProdutoVendido($tabelaVendas, $produtosVendas, $dados);
 
-            $resposta = ModelProdutos::mdlExcluirProduto($tabela, $dados);
-
-            if ($resposta == "ok") {
+            if(!$verificaSeProdutoVendido){
+                if ($_GET["imagem"] != "" && $_GET["imagem"] != "views/img/produtos/product-default.png") {
+                    unlink($_GET["imagem"]);
+                    rmdir('views/img/produtos/' . $_GET["codigo"]);
+                }
+    
+                $resposta = ModelProdutos::mdlExcluirProduto($tabela, $dados);
+    
+                if ($resposta == "ok") {
+                    echo "<script>
+    
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Produto excluído com sucesso!',
+                            confirmButtonText: 'Fechar',
+    
+                        }).then((result) => {
+                            if(result.value){
+                                window.location = 'produtos';}
+                        });
+                    
+                        </script>";
+                }
+            }else{
                 echo "<script>
+    
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Erro!',
+                    text: 'Produto vinculado em uma venda e não pode ser excluído!',
+                    confirmButtonText: 'Fechar',
 
-                    Swal.fire({
-                        icon: 'success',
-                        title: 'Produto excluído com sucesso!',
-                        confirmButtonText: 'Fechar',
-
-                    }).then((result) => {
-                        if(result.value){
-                            window.location = 'produtos';}
-                    });
-                
-                    </script>";
+                }).then((result) => {
+                    if(result.value){
+                        window.location = 'produtos';}
+                });
+            
+                </script>";
             }
-
         }
     }
 
