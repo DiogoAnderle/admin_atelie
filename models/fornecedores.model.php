@@ -19,10 +19,6 @@ class ModeloFornecedores
         } else {
             return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
     }
 
     /*==================================
@@ -51,10 +47,6 @@ class ModeloFornecedores
             return $stmt->fetchAll();
         }
 
-        $stmt->close();
-
-        $stmt = null;
-
     }
 
     /*==================================
@@ -82,10 +74,6 @@ class ModeloFornecedores
 
         }
 
-        $stmt->close();
-
-        $stmt = null;
-
     }
 
     public static function mdlExcluirFornecedor($tabela, $dados)
@@ -101,10 +89,6 @@ class ModeloFornecedores
             return "error";
 
         }
-
-        $stmt->close();
-
-        $stmt = null;
 
 
     }

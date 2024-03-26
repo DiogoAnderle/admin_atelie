@@ -25,11 +25,7 @@ class ModeloClientes
         } else {
             return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
-
+        
     }
     /* ********************************* 
              Mostrar Cliente
@@ -53,11 +49,7 @@ class ModeloClientes
 
             return $stmt->fetchAll();
         }
-
-        $stmt->close();
-
-        $stmt->null();
-    }
+            }
 
     /* ********************************* 
                  Editar Cliente
@@ -82,11 +74,7 @@ class ModeloClientes
         } else {
             return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
-
+        
     }
 
     /* ********************************* 
@@ -106,11 +94,7 @@ class ModeloClientes
 
             return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
-
+        
     }
     /* ********************************* 
                  Excluir Cliente
@@ -124,13 +108,8 @@ class ModeloClientes
         if ($stmt->execute()) {
             return "ok";
         } else {
-            echo $stmt;
-            //return "error";
+            return "error";
         }
-
-        $stmt->close();
-
-        $stmt->null();
     }
 
 
