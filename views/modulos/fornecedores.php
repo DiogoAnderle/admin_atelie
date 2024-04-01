@@ -105,7 +105,7 @@ MODAL CRIAR FORNECEDOR
 
             <div class="form-group">
               <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-th"></i></span>
+                <span class="input-group-addon"><i class="fa fa-building"></i></span>
                 <input type="text" class="form-control input-lg" id="novoFornecedor" name="novoFornecedor"
                   placeholder="Fornecedor">
               </div>

@@ -115,7 +115,6 @@ class ControllerCategorias
                     </script>";
             }
         }
-
     }
 
     /*==================================
@@ -166,13 +165,6 @@ class ControllerCategorias
                         });
                     </script>";
             }
-
-
-
-
         }
     }
-
-
-
 }

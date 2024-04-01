@@ -28,6 +28,11 @@ $naoRepetirClientes = array_unique($arrayClientes);
 <div class="box box-primary">
     <div class="box-header with-border">
         <h3>Clientes</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
     </div>
     <div class="chart-responsive">
         <div class="chart" id="bar-chart-clientes" style="height: 300px;"></div>

@@ -42,7 +42,7 @@ $produtos = ControllerProdutos::ctrMostrarProdutos($item, $valor, $ordem);
         </ul>
     </div>
     <!-- /.box-body -->
-    <div class="box-footer text-center">
+    <div class="box-footer text-center" style="padding:15px;">
         <a href="produtos" class="uppercase">Ver todos os produtos</a>
     </div>
     <!-- /.box-footer -->

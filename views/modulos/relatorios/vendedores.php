@@ -30,6 +30,11 @@ $naoRepetirVendedores = array_unique($arrayVendedores);
 <div class="box box-success">
     <div class="box-header with-border">
         <h3>Vendedores</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
     </div>
     <div class="chart-responsive">
         <div class="chart" id="bar-chart-vendedores" style="height: 300px;"></div>

@@ -1,6 +1,6 @@
-/*!
- *   AdminLTE v2.4.0
- *   Author: Almsaeed Studio
+/*
+ ? AdminLTE v2.4.0
+ !   Author: Almsaeed Studio
  *	 Website: Almsaeed Studio <https://adminlte.io>
  *   License: Open source - MIT
  *           Please visit http://opensource.org/licenses/MIT for more information
@@ -6796,6 +6796,14 @@ table.text-center th {
 .chart svg,
 .chart canvas {
   width: 100% !important;
+}
+
+.showpassword {
+  position: absolute;
+  margin: 15px -35px;
+  cursor: pointer;
+  z-index: 10;
+  font-size: 1.2em
 }
 
 /*

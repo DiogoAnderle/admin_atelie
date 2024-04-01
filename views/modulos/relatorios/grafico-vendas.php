@@ -2,7 +2,7 @@
 
 error_reporting(0);
 
-if (isset($_GET["dataInicial"])) {
+if (isset ($_GET["dataInicial"])) {
 
     $dataInicial = $_GET["dataInicial"];
     $dataFinal = $_GET["dataFinal"];
@@ -46,6 +46,11 @@ $naoRepetirDatas = array_unique($arrayDatas);
     <div class="box-header">
         <i class="fa fa-th"></i>
         <h3 class="box-title">Gráfico de Vendas</h3>
+        <div class="box-tools pull-right">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+            <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+        </div>
     </div>
     <div class="box-body border-radius-none novoGraficoVendas">
 

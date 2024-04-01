@@ -436,27 +436,45 @@ class ControllerUsuarios
             $tabela = 'usuarios';
             $dados = $_GET["idUsuario"];
 
-            if ($_GET["imagemUsuario"] != "") {
-                unlink($_GET["imagemUsuario"]);
-                rmdir("views/img/usuarios/" . $_GET['usuario']);
-            }
+            $tabelaVendas = 'vendas';
+            $itemVendas = 'vendedor_id';
 
-            $resposta = ModeloUsuarios::mdlExcluirUsuario($tabela, $dados);
+            $verificaVendasUsuarios = ModeloVendas::mdlMostrarVendas($tabelaVendas, $itemVendas, $dados);
 
-            if ($resposta == "ok") {
+            if (!$verificaVendasUsuarios) {
+                if ($_GET["imagemUsuario"] != "") {
+                    unlink($_GET["imagemUsuario"]);
+                    rmdir("views/img/usuarios/" . $_GET['usuario']);
+                }
+
+                $resposta = ModeloUsuarios::mdlExcluirUsuario($tabela, $dados);
+
+                if ($resposta == "ok") {
+                    echo "<script>
+
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Sucesso',
+                        text: 'Usuário excluído com sucesso.',
+                        showConfirmButton: 'false',
+                    }).then((result) => {
+                        if(result.value){
+                            window.location = 'usuarios';}
+                    });
+                
+                    </script>";
+                }
+            } else {
                 echo "<script>
 
-                Swal.fire({
-                    icon: 'success',
-                    title: 'Sucesso',
-                    text: 'Usuário excluído com sucesso.',
-                    showConfirmButton: 'false',
-                }).then((result) => {
-                    if(result.value){
-                        window.location = 'usuarios';}
-                });
-            
-                </>";
+                 Swal.fire({
+                     icon: 'error',
+                     title: 'Oops, algo deu errado!',
+                     text: 'Usuário não pode ser excluído, possui vendas vinculadas.',
+                     showConfirmButton: 'false',
+                 })
+             
+                 </script>";
             }
         }
     }

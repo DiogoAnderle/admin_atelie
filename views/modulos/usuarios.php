@@ -156,8 +156,7 @@ MODAL CRIAR USUÁRIO
                 <span style="position:relative;">
                   <input type="password" class="form-control input-lg" name="senha" id="senha" placeholder="Senha">
 
-                  <i style="position:absolute; margin:15px -35px; z-index:10; font-size:1.2em" class="fa fa-eye-slash"
-                    id="mostrarOcultarSenha"></i>
+                  <i class="fa fa-eye-slash showpassword" id="mostrarOcultarSenha"></i>
                 </span>
 
               </div>

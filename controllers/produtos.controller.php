@@ -20,7 +20,7 @@ class ControllerProdutos
     public static function ctrCriarProduto()
     {
 
-        if (isset($_POST["novaDescricao"])) {
+        if (isset ($_POST["novaDescricao"])) {
             if (
                 preg_match('/^[a-zA-Z0-9nÑãÃõÕçÇáéíóúÁÉÍÓÚàÀ ]+$/', $_POST["novaDescricao"]) &&
                 preg_match('/^[0-9]+$/', $_POST["novoEstoque"]) &&
@@ -32,7 +32,7 @@ class ControllerProdutos
                 /* *****************************
                  * validar imagem
                  **************************** */
-                if (isset($_FILES["novaImagem"]["tmp_name"]) && $_FILES["novaImagem"]["tmp_name"] != "") {
+                if (isset ($_FILES["novaImagem"]["tmp_name"]) && $_FILES["novaImagem"]["tmp_name"] != "") {
 
                     list($largura, $altura) = getimagesize($_FILES["novaImagem"]["tmp_name"]);
 
@@ -143,7 +143,7 @@ class ControllerProdutos
     public static function ctrEditarProduto()
     {
 
-        if (isset($_POST["editarDescricao"])) {
+        if (isset ($_POST["editarDescricao"])) {
             if (
                 preg_match('/^[a-zA-Z0-9nÑãÃõÕçÇáéíóúÁÉÍÓÚàÀ ]+$/', $_POST["editarDescricao"]) &&
                 preg_match('/^[0-9]+$/', $_POST["editarEstoque"]) &&
@@ -153,9 +153,9 @@ class ControllerProdutos
 
                 $rota = $_POST["imagemAtual"];
                 /* *****************************
-                 * validar imagem
+                  ? VALIDAR IMAGEM
                  **************************** */
-                if (isset($_FILES["editarImagem"]["tmp_name"]) && !empty($_FILES["editarImagem"]["tmp_name"])) {
+                if (isset ($_FILES["editarImagem"]["tmp_name"]) && !empty ($_FILES["editarImagem"]["tmp_name"])) {
 
                     list($largura, $altura) = getimagesize($_FILES["editarImagem"]["tmp_name"]);
 
@@ -172,7 +172,7 @@ class ControllerProdutos
                      * criar diretório para salvar a imagem do produto
                      **************************** */
 
-                    if (!empty($_POST["imagemAtual"])) {
+                    if (!empty ($_POST["imagemAtual"])) {
                         unlink($_POST["imagemAtual"]);
                     } else {
 
@@ -264,19 +264,18 @@ class ControllerProdutos
                     });
                 
                     </script>";
-
             }
         }
     }
 
 
     /*==============================================
-                Excluir Produto
+     ! Excluir Produto
     ==============================================*/
 
     public static function ctrExcluirProduto()
     {
-        if (isset($_GET["idProduto"])) {
+        if (isset ($_GET["idProduto"])) {
 
             $tabela = 'produtos';
             $dados = $_GET["idProduto"];
@@ -286,14 +285,14 @@ class ControllerProdutos
             $produtosVendas = "produtos";
             $verificaSeProdutoVendido = ModeloVendas::mdlVerificaSeProdutoVendido($tabelaVendas, $produtosVendas, $dados);
 
-            if(!$verificaSeProdutoVendido){
+            if (!$verificaSeProdutoVendido) {
                 if ($_GET["imagem"] != "" && $_GET["imagem"] != "views/img/produtos/product-default.png") {
                     unlink($_GET["imagem"]);
                     rmdir('views/img/produtos/' . $_GET["codigo"]);
                 }
-    
+
                 $resposta = ModelProdutos::mdlExcluirProduto($tabela, $dados);
-    
+
                 if ($resposta == "ok") {
                     echo "<script>
     
@@ -302,14 +301,11 @@ class ControllerProdutos
                             title: 'Produto excluído com sucesso!',
                             confirmButtonText: 'Fechar',
     
-                        }).then((result) => {
-                            if(result.value){
-                                window.location = 'produtos';}
-                        });
+                        })
                     
                         </script>";
                 }
-            }else{
+            } else {
                 echo "<script>
     
                 Swal.fire({
@@ -318,11 +314,7 @@ class ControllerProdutos
                     text: 'Produto vinculado em uma venda e não pode ser excluído!',
                     confirmButtonText: 'Fechar',
 
-                }).then((result) => {
-                    if(result.value){
-                        window.location = 'produtos';}
-                });
-            
+                })            
                 </script>";
             }
         }
