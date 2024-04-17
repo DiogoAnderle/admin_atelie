@@ -77,7 +77,6 @@ $("#novoFornecedor").change(function () {
         $("#novoFornecedor").val("");
         $("#novoFornecedor").focus();
         $("#novoFornecedor").addClass('vermelho');
-
       }
     },
   });
